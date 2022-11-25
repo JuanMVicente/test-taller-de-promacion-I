@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/AdministradorExistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ComandaInexistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ContraseniaIncorrectaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MaximaCantidadMozosException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MesaInexistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MesaNoAsignadaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MesaNoOcupadaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MesaOcupadaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MesaRepetidaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MozoExistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/MozoInexistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/OperacionNoAutorizadaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/OperarioExistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/OperarioInexistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ProductoEnComandaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ProductoExistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/ProductoInexistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/PromocionInexistenteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/SistemaYaInicializadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/StockInsuficienteException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/UsuarioInactivoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/Administrador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/CrearOperario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/GestionarOperarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/GestionarProductos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/IVista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestPedido.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I2queqRywp8nxZSiwZ11GFg63W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_directory_selection": "C:/Users/320 i5/Documents/Facultad/Taller de Programacion 1/Practica/Trabajo practico Final/pruebas-unitarias-modelo/src/test/java/test/Mesa",
+    "last_opened_file_path": "C:/Users/320 i5/Documents/Facultad/Taller de Programacion 1/Practica/Trabajo practico Final/pruebas-unitarias-modelo/src/main/java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Trabajo practico Final\pruebas-unitarias-modelo\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Trabajo practico Final\pruebas-unitarias-modelo\src\main\java" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="modelos" />
+      <recent name="test.java" />
+      <recent name="test.Mesa" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TestPedido" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.TestPedido" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestPedido" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="" />
+      <created>1669390251739</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669390251739</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/modelos/Sistema.java</url>
+          <line>381</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

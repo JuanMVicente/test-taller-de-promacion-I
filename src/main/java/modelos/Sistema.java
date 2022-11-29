@@ -614,4 +614,46 @@ public class Sistema {
 
         assert productosPromocionadosHoy >= 2 : "Debe haber al menos 2 productos promocionados hoy";
     }
+
+    // AGREGADOS PARA TESTEAR
+
+    public String getNombreLocal() {
+        return nombreLocal;
+    }
+
+    public List<Mozo> getMozos() {
+        return mozos;
+    }
+
+    public List<Mesa> getMesas() {
+        return mesas;
+    }
+
+    public List<Operario> getOperarios() {
+        return operarios;
+    }
+
+    public Map<Mozo, List<Mesa>> getAsignacionMesas() {
+        return asignacionMesas;
+    }
+
+    public Map<Producto, List<PromocionProducto>> getPromocionesProducto() {
+        return promocionesProducto;
+    }
+
+    public List<PromocionTemporal> getPromocionesTemporales() {
+        return promocionesTemporales;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public Map<Mesa, Comanda> getComandas() {
+        return comandas;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
 }

@@ -88,4 +88,12 @@ public class Administrador extends Operario {
     public static boolean isInicializado() {
         return inicializado;
     }
+
+    public static Administrador getInstancia() {
+        return instancia;
+    }
+
+    public boolean isEstablecioContrasenia() {
+        return establecioContrasenia;
+    }
 }

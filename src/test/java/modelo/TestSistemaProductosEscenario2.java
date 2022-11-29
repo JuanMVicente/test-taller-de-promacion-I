@@ -23,7 +23,7 @@ public class TestSistemaProductosEscenario2 {
         prod = new Producto("Plato", 150, 200, 30);
     }
 
-    @After
+    @AfterClass
     public void tearDown(){
         sistema = null;
         prod = null;

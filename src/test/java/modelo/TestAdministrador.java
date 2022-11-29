@@ -1,114 +1,130 @@
-package modelos;
+package modelo;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import modelos.Administrador;
+import org.junit.*;
 
 import excepciones.AdministradorExistenteException;
 import excepciones.ContraseniaIncorrectaException;
 import excepciones.UsuarioInactivoException;
+import org.junit.runners.MethodSorters;
 
-@TestMethodOrder(OrderAnnotation.class)
-class TestAdministrador {
+import java.security.SignatureSpi;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class TestAdministrador {
 	
 	private Administrador adm;
-	
-	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
 
 	@Test
-	@Order(1)
-	void crearAdministrador1() {
+	public void test1_CrearAdministrador() {
+		if(Administrador.isInicializado())
+			Assert.fail("Escenario mal inicializado");
 		try {
-			this. adm = Administrador.crearAdministrador();
+			adm = Administrador.crearAdministrador();
+			Assert.assertNotNull("No se intancio correctamente el administrador", adm);
 		} catch (AdministradorExistenteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Assert.fail("Se emitio excepcion de manera incorrecta");
 		}
 	}
-	
+
 	@Test
-	@Order(2)
-	void crearAdministrador2() {
+	public void test2_CrearAdministradorYaInicializado() {
+		if(!Administrador.isInicializado()) {
+			try {
+				adm = Administrador.crearAdministrador();
+			} catch (AdministradorExistenteException e) {
+				Assert.fail("Se emitio incorrectamente la excepcion");
+			}
+		}
 		try {
-			this. adm = Administrador.crearAdministrador();
+			this.adm = Administrador.crearAdministrador();
+			Assert.fail("No se emitio la excepcion correspondiente");
 		} catch (AdministradorExistenteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
+
+
+
 	
 	@Test
-	@Order(3)
-	void iniciarSesion1() {
+	public void test3_IniciaSesionUsuarioActivoContraseñaCorrecta() {
+		try{
+			adm = (Administrador.isInicializado()) ? Administrador.getInstancia() : Administrador.crearAdministrador();
+			Assert.assertNotNull("No se intancio correctamente el administrador", adm);
+			adm.setActivo(true);
+		} catch (AdministradorExistenteException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		}
 		try {
-			this.adm.iniciarSesion("ADMIN1234");
-		} catch (UsuarioInactivoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContraseniaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			adm.iniciarSesion("ADMIN1234");
+		} catch (UsuarioInactivoException | ContraseniaIncorrectaException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
 		}
 	}
 	
 	@Test
-	@Order(4)
-	void iniciarSesion2() {
-		this.adm.setActivo(false);
+	public void test4_IniciaSesionUsuarioActivoContraseñaIncorrecta() {
+		try{
+			adm = (Administrador.isInicializado()) ? Administrador.getInstancia() : Administrador.crearAdministrador();
+			Assert.assertNotNull("No se intancio correctamente el administrador", adm);
+			adm.setActivo(true);
+		} catch (AdministradorExistenteException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		}
 		try {
-			this.adm.iniciarSesion("ADMIN1234");
-		} catch (UsuarioInactivoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContraseniaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			adm.iniciarSesion("ADMIN123456789");
+			Assert.fail("No se emitio correctamente la excepcion correspondiente");
+		} catch (UsuarioInactivoException  e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		} catch (ContraseniaIncorrectaException e){
 		}
 	}
-	
-	@Test
-	@Order(5)
-	void iniciarSesion3() {
-		this.adm.setActivo(true);
-		
+
+	public void test5_IniciaSesionUsuarioInactivoContraseñaCorrecta() {
+		try{
+			adm = (Administrador.isInicializado()) ? Administrador.getInstancia() : Administrador.crearAdministrador();
+			Assert.assertNotNull("No se intancio correctamente el administrador", adm);
+			adm.setActivo(false);
+		} catch (AdministradorExistenteException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		}
 		try {
-			this.adm.iniciarSesion("admin1234");
-		} catch (UsuarioInactivoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContraseniaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			adm.iniciarSesion("ADMIN1234");
+			Assert.fail("No se emitio la excepcion correspondiente");
+		} catch ( ContraseniaIncorrectaException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		} catch (UsuarioInactivoException e){
+
 		}
-		
 	}
-	
+
 	@Test
-	@Order(5)
-	void cambiarContrasenia() {
-		
-		this.adm.cambiarContrasenia("COnt1234");
-		
+	public void test6_IniciaSesionUsuarioInactivoContraseñaIncorrecta() {
+		try{
+			adm = (Administrador.isInicializado()) ? Administrador.getInstancia() : Administrador.crearAdministrador();
+			Assert.assertNotNull("No se intancio correctamente el administrador", adm);
+			adm.setActivo(false);
+		} catch (AdministradorExistenteException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		}
+		try {
+			adm.iniciarSesion("ADMIN123456789");
+			Assert.fail("No se emitio correctamente la excepcion correspondiente");
+		} catch (UsuarioInactivoException | ContraseniaIncorrectaException e) {
+		}
+	}
+
+	@Test
+	public void test7_CambioDeContrasenia(){
+		try{
+			adm = (Administrador.isInicializado()) ? Administrador.getInstancia() : Administrador.crearAdministrador();
+			Assert.assertNotNull("No se intancio correctamente el administrador", adm);
+			adm.setActivo(false);
+		} catch (AdministradorExistenteException e) {
+			Assert.fail("Se emitio excepcion de manera incorrecta");
+		}
+		adm.cambiarContrasenia("Nueva123456");
+		Assert.assertTrue("No se cambio correctamente el parametro establecioContrasenia", adm.isEstablecioContrasenia());
 	}
 
 }

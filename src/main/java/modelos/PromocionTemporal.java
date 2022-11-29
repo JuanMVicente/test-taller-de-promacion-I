@@ -64,4 +64,20 @@ public class PromocionTemporal extends Promocion {
         assert porcentajeDescuento > 0 : "El porcentaje de descuento de la promocion temporal no puede ser menor o igual a 0";
         assert porcentajeDescuento <= 100 : "El porcentaje de descuento de la promocion temporal no puede ser mayor a 100";
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public FormaPago getFormaPago() {
+        return formaPago;
+    }
+
+    public int getPorcentajeDescuento() {
+        return porcentajeDescuento;
+    }
+
+    public boolean isEsAcumulable() {
+        return esAcumulable;
+    }
 }

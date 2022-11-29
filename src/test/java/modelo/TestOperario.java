@@ -1,140 +1,139 @@
-package modelos;
+package modelo;
 
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import excepciones.SistemaYaInicializadoException;
+import modelos.Operario;
+import modelos.Sistema;
+import modelos.enums.ModoOperacion;
+import org.junit.*;
 
 import excepciones.ContraseniaIncorrectaException;
 import excepciones.UsuarioInactivoException;
 
-@TestMethodOrder(OrderAnnotation.class)
-class TestOperario {
+public class TestOperario {
 
 	private Operario oper;
 	private Sistema sistema;
-	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	@Test
-	@Order(1)
-	void Operario() {
-		this.oper = new Operario("Jose","Perez","joseperez1","Cont123");
-	}
-	
-	@Test
-	@Order(2)
-	void iniciarSesion1() {
-		this.sistema = Sistema.getInstancia();
-		this.oper.setActivo(true);
+	@BeforeClass
+	public static void setUp() {
 		try {
-			this.oper.iniciarSesion("Cont123");
-		} catch (UsuarioInactivoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContraseniaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if(!Sistema.isInicializado())
+				Sistema.inicializarSistema("Nombre local");
+		} catch (Exception e) {
+			//Se da por supuesto que la inicializacion del sistema se debe testear antes
 		}
-		
 	}
-	
+
+	@Before
+	public void setup(){
+		oper = new Operario("Jose","Perez","joseperez1","Cont123");
+		sistema = Sistema.getInstancia();
+	}
+
+	@After
+	public void tearDown() {
+		oper = null;
+		sistema = null;
+	}
+
 	@Test
-	@Order(3)
-	void iniciarSesion2() {
-		this.sistema = Sistema.getInstancia();
-		
-		this.oper.setActivo(false);
+	public void constructor(){
+		String nombre = "pepe";
+		String apellido = "Gonzalez";
+		String nombreUsuario = "PepeGonzalez";
+		String pass = "Admin123";
+		Operario nuevo = new Operario(nombre, apellido, nombreUsuario, pass);
+		Assert.assertEquals("No se asigno correctamente el nombre", nombre, nuevo.getNombre());
+		Assert.assertEquals("No se asigno correctamente el apellido", apellido, nuevo.getApellido());
+		Assert.assertEquals("No se asigno correctamente el nombre de usuario", nombreUsuario, nuevo.getNombreUsuario());
+		Assert.assertTrue("No se inicializo correctamente el estado del operario", nuevo.isActivo());
+	}
+
+	@Test
+	public void iniciaSesionOperarioActivoContraseniaCorrecta(){
+		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+		oper.setActivo(true);
 		try {
-			this.oper.iniciarSesion("Cont123");
-		} catch (UsuarioInactivoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContraseniaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			oper.iniciarSesion("Cont1");
+			Assert.assertTrue("No se asigno correctamente el modo de operacion", sistema.getModoOperacion().equals(ModoOperacion.OPERARIO));
+		} catch (UsuarioInactivoException | ContraseniaIncorrectaException e) {
+			Assert.fail("Se emitio una excepcion que no correspondia");
 		}
-		
 	}
-	
+
 	@Test
-	@Order(3)
-	void iniciarSesion3() {
-		this.sistema = Sistema.getInstancia();
-		this.oper.setActivo(true);
+	public void iniciaSesionOperarioActivoContraseniaIncorrecta(){
+		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+		oper.setActivo(true);
 		try {
-			this.oper.iniciarSesion("Cont123");
+			oper.iniciarSesion("Cont1234");
+			Assert.fail("No se emitio la excepcion correspondiente");
 		} catch (UsuarioInactivoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContraseniaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Assert.fail("Se emitio una excepcion que no correspondia");
+		} catch (ContraseniaIncorrectaException e){
+
 		}
-		
 	}
-	
+
 	@Test
-	@Order(3)
-	void cambiarContrasenia() {
-		this.sistema = Sistema.getInstancia();
-		this.oper.setActivo(true);
-		this.oper.cambiarContrasenia("COnt123");
-		
+	public void iniciaSesionOperarioInactivoContraseniaCorrecta(){
+		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+		oper.setActivo(false);
+		try {
+			oper.iniciarSesion("Cont1");
+			Assert.fail("No se emitio la excepcion correspondiente");
+		} catch (ContraseniaIncorrectaException e) {
+			Assert.fail("Se emitio una excepcion que no correspondia");
+		} catch (UsuarioInactivoException e){
+
+		}
 	}
-	
+
 	@Test
-	@Order(3)
-	void verificarContrasenia1() {
-		assert modelos.Operario.verificarContrasenia("Cont123");
+	public void iniciaSesionOperarioInactivoContraseniaIncorrecta(){
+		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+		oper.setActivo(false);
+		try {
+			oper.iniciarSesion("Cont1234");
+			Assert.fail("No se emitio la excepcion correspondiente");
+		} catch (UsuarioInactivoException | ContraseniaIncorrectaException e) {
+
+		}
 	}
-	
+
 	@Test
-	@Order(3)
-	void verificarContrasenia2() {
-		assert modelos.Operario.verificarContrasenia("Cont1");
+	public void verificarContraseniaCorrecta(){
+		String pass = "Admin1234";
+		Assert.assertTrue("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
-	
+
 	@Test
-	@Order(3)
-	void verificarContrasenia3() {
-		assert modelos.Operario.verificarContrasenia("Contrasenia123");
+	public void verificarContraseniaIncorrecta1(){
+		String pass = "admin123";
+		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
-	
+
 	@Test
-	@Order(3)
-	void verificarContrasenia4() {
-		assert modelos.Operario.verificarContrasenia("contrasenia");
+	public void verificarContraseniaIncorrecta2(){
+		String pass = "adm";
+		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
+
 	@Test
-	@Order(3)
-	void verificarContrasenia5() {
-		assert modelos.Operario.verificarContrasenia("cont123");
+	public void verificarContraseniaIncorrecta3(){
+		String pass = "Administrador123456789";
+		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
-	
+
 	@Test
-	@Order(3)
-	void verificarContrasenia6() {
-		assert modelos.Operario.verificarContrasenia(null);
+	public void verificarContraseniaIncorrecta4(){
+		String pass = "Adminis";
+		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
+
+
+
 
 }

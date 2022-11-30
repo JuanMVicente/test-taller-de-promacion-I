@@ -27,8 +27,7 @@ public class Mesa {
     public Mesa(int nroMesa, int capacidad) {
         assert nroMesa >= 0 : "El número de mesa no puede ser negativo";
         assert capacidad > 0 : "La capacidad no puede ser negativa";
-        assert nroMesa == 0 && capacidad >= 1 : "La capacidad de la barra debe ser al menos 1";
-        assert nroMesa >= 1 && capacidad >= 2 : "La capacidad de una mesa debe ser al menos 2";
+        assert nroMesa == 0 ? capacidad >= 1 : capacidad >= 2 : "debe respetar la capacidad de la barra/mesa";
 
         this.nroMesa = nroMesa;
         this.capacidad = capacidad;
@@ -71,7 +70,7 @@ public class Mesa {
         assert nroMesa >= 0 : "El número de mesa no puede ser negativo";
         assert capacidad > 0 : "La capacidad no puede ser negativa";
 
-        assert nroMesa == 0 && capacidad >= 1 : "La capacidad de la barra debe ser al menos 1";
-        assert nroMesa >= 1 && capacidad >= 2 : "La capacidad de una mesa debe ser al menos 2";
+        assert nroMesa == 0 ? capacidad >= 1 : capacidad >= 2 : "debe respetar la capacidad de la barra/mesa";
+
     }
 }

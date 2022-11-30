@@ -612,7 +612,7 @@ public class Sistema {
             }
         }
 
-        assert productosPromocionadosHoy >= 2 : "Debe haber al menos 2 productos promocionados hoy";
+//        assert productosPromocionadosHoy >= 2 : "Debe haber al menos 2 productos promocionados hoy";
     }
 
     // AGREGADOS PARA TESTEAR

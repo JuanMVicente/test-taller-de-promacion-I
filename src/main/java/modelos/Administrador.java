@@ -41,6 +41,7 @@ public class Administrador extends Operario {
 
         Administrador administrador = new Administrador();
         inicializado = true;
+        instancia = administrador;
 
         assert instancia != null : "No se creó la instancia del administrador";
         return administrador;

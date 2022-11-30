@@ -50,13 +50,10 @@ public class TestSistemaComandas {
     public void testCrearComandaConMesaNoExistenteLibre(){
         Mesa nueva = new Mesa(4,5);
         try {
-            sistema.agregarMesa(nueva);
-            sistema.crearComanda(mesa);
+            sistema.crearComanda(nueva);
             Assert.fail("No se arrojo la excepcion esperada");
-        } catch (MesaRepetidaException | OperacionNoAutorizadaException e) {
-            Assert.fail("Error al preparar escenario");
         } catch (MesaInexistenteException e) {
-            Assert.fail("La comanda no se creo correctamente");
+
         } catch (MesaOcupadaException e){
             Assert.fail("Error al emitir excepcion");
         }

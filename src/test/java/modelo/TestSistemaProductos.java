@@ -43,11 +43,14 @@ public class TestSistemaProductos {
     }
 
     private void agregarProducto(Producto prod){
+        ModoOperacion aux = sistema.getModoOperacion();
+        sistema.setModoOperacion(ModoOperacion.ADMINISTRADOR);
         try {
             sistema.agregarProducto(prod);
         } catch (ProductoExistenteException | OperacionNoAutorizadaException e) {
             Assert.fail("Error al preparar escenario");
         }
+        sistema.setModoOperacion(aux);
     }
 
     private void agregarProductoEnComanda(Producto prod){

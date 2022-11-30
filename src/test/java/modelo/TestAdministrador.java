@@ -15,7 +15,6 @@ public class TestAdministrador {
 
 	@Before
 	public void setup(){
-
 	}
 
 	@After
@@ -29,6 +28,10 @@ public class TestAdministrador {
 		} catch (AdministradorExistenteException e) {
 			Assert.fail("Se emitio incorrectamente la excepcion");
 		}
+	}
+
+	private void cambiarContrasenia(){
+		adm.cambiarContrasenia("Nueva123456");
 	}
 
 	@Test
@@ -57,9 +60,10 @@ public class TestAdministrador {
 	@Test
 	public void test3_IniciaSesionUsuarioActivoContraseñaCorrecta() {
 		inicializaAdministrador();
+		cambiarContrasenia();
 		adm.setActivo(true);
 		try {
-			adm.iniciarSesion("ADMIN1234");
+			adm.iniciarSesion("Nueva123456");
 		} catch (UsuarioInactivoException | ContraseniaIncorrectaException e) {
 			Assert.fail("Se emitio excepcion de manera incorrecta");
 		}
@@ -68,6 +72,7 @@ public class TestAdministrador {
 	@Test
 	public void test4_IniciaSesionUsuarioActivoContraseñaIncorrecta() {
 		inicializaAdministrador();
+		cambiarContrasenia();
 		adm.setActivo(true);
 		try {
 			adm.iniciarSesion("ADMIN123456789");
@@ -80,6 +85,7 @@ public class TestAdministrador {
 
 	public void test5_IniciaSesionUsuarioInactivoContraseñaCorrecta() {
 		inicializaAdministrador();
+		cambiarContrasenia();
 		adm.setActivo(false);
 		try {
 			adm.iniciarSesion("ADMIN1234");
@@ -94,6 +100,7 @@ public class TestAdministrador {
 	@Test
 	public void test6_IniciaSesionUsuarioInactivoContraseñaIncorrecta() {
 		inicializaAdministrador();
+		cambiarContrasenia();
 		adm.setActivo(false);
 		try {
 			adm.iniciarSesion("ADMIN123456789");

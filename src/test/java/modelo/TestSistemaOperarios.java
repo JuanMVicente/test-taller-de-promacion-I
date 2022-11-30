@@ -29,7 +29,7 @@ public class TestSistemaOperarios {
             //Se da por supuesto que la inicializacion del sistema ya esta testeada
         }
         sistema = Sistema.getInstancia();
-        operario = new Operario("Carlos", "Gomez", "CarlosGomez", "Carlos123");
+        operario = new Operario("Carlos", "Gomez", "CGomez", "Carlos123");
     }
 
     @After

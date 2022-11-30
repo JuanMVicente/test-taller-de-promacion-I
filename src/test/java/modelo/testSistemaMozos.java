@@ -65,8 +65,10 @@ public class testSistemaMozos {
         sistema.setModoOperacion(ModoOperacion.ADMINISTRADOR);
         try {
             sistema.agregarMozo(mozo);
-        } catch (MozoExistenteException | MaximaCantidadMozosException | OperacionNoAutorizadaException e) {
+        } catch (MozoExistenteException | OperacionNoAutorizadaException e) {
             Assert.fail("Error al crear escenario");
+        } catch (MaximaCantidadMozosException e){
+            //Se ignora debido a que en algunos casos se busca generar esta condicion para testear el comportamiento del objeto
         }
         sistema.setModoOperacion(aux);
     }
@@ -157,9 +159,9 @@ public class testSistemaMozos {
         try {
             sistema.agregarMozo(mozo);
             Assert.fail("No se emitio la excepcion esperada");
-        } catch (MozoExistenteException | OperacionNoAutorizadaException e) {
+        } catch (MozoExistenteException e) {
             Assert.fail("Se emitio una excepcion no esperada");
-        } catch (MaximaCantidadMozosException e){
+        } catch (MaximaCantidadMozosException | OperacionNoAutorizadaException e){
 
         }
     }

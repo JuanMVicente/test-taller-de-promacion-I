@@ -38,7 +38,7 @@ public class TestOperario {
 	public void testConstructor(){
 		String nombre = "pepe";
 		String apellido = "Gonzalez";
-		String nombreUsuario = "PepeGonzalez";
+		String nombreUsuario = "PGonzalez";
 		String pass = "Admin123";
 		Operario nuevo = new Operario(nombre, apellido, nombreUsuario, pass);
 		Assert.assertEquals("No se asigno correctamente el nombre", nombre, nuevo.getNombre());
@@ -51,7 +51,7 @@ public class TestOperario {
 	public void testIniciaSesionOperarioActivoContraseniaCorrecta(){
 		oper.setActivo(true);
 		try {
-			oper.iniciarSesion("Cont1");
+			oper.iniciarSesion("Cont123");
 			Assert.assertTrue("No se asigno correctamente el modo de operacion", sistema.getModoOperacion().equals(ModoOperacion.OPERARIO));
 		} catch (UsuarioInactivoException | ContraseniaIncorrectaException e) {
 			Assert.fail("Se emitio una excepcion que no correspondia");

@@ -1,6 +1,8 @@
 package modelo;
 
+import excepciones.SistemaYaInicializadoException;
 import modelos.Administrador;
+import modelos.Sistema;
 import org.junit.*;
 
 import excepciones.AdministradorExistenteException;
@@ -24,8 +26,9 @@ public class TestAdministrador {
 
 	private void inicializaAdministrador(){
 		try {
-			adm = Administrador.crearAdministrador();
-		} catch (AdministradorExistenteException e) {
+			Sistema.inicializarSistema("nombre-test");
+			adm = Administrador.getInstancia();
+		} catch (SistemaYaInicializadoException e) {
 			Assert.fail("Se emitio incorrectamente la excepcion");
 		}
 	}

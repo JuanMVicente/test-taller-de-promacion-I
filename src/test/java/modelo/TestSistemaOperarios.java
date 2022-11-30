@@ -25,16 +25,18 @@ public class TestSistemaOperarios {
         try {
             if(!Sistema.isInicializado())
                 Sistema.inicializarSistema(nombreLocal);
-            sistema = Sistema.getInstancia();
         } catch (SistemaYaInicializadoException e) {
             //Se da por supuesto que la inicializacion del sistema ya esta testeada
         }
+        sistema = Sistema.getInstancia();
         operario = new Operario("Carlos", "Gomez", "CarlosGomez", "Carlos123");
     }
 
     @After
     public void turndown(){
-        Field instance;
+        ResetInstance.reseteSistemaAndAdministrador();
+        operario = null;
+        sistema = null;
 
     }
 
@@ -126,9 +128,61 @@ public class TestSistemaOperarios {
 
     @Test
     public void testEliminarOperarioInexistenteEscenario1(){
+        escenario1();
+        try{
+            sistema.eliminarOperario(operario);
+            Assert.fail("No se emitio la excepcion esperada");
+        } catch (OperacionNoAutorizadaException e) {
+            Assert.fail("Se emitio la excepcion incorrecta");
+        } catch (OperarioInexistenteException e) {
 
+        }
     }
 
+    @Test
+    public void testEliminarOperarioExistenteEscenario2(){
+        escenario2();
+        agregaOperario(operario);
+        try{
+            sistema.eliminarOperario(operario);
+            Assert.fail("No se emitio la excepcion esperada");
+        } catch (OperacionNoAutorizadaException e) {
+
+        } catch (OperarioInexistenteException e) {
+            Assert.fail("Se emitio la excepcion incorrecta");
+        }
+    }
+
+    @Test
+    public void testEliminarOperarioInexistenteEscenario2(){
+        escenario2();
+        try{
+            sistema.eliminarOperario(operario);
+            Assert.fail("No se emitio la excepcion esperada");
+        } catch (OperacionNoAutorizadaException | OperarioInexistenteException e) {
+        }
+    }
+
+    @Test
+    public void testBuscarOperarioExistente(){
+        agregaOperario(operario);
+        try{
+            Operario buscado = sistema.buscarOperario(operario.getNombreUsuario());
+            Assert.assertEquals("No se retorno el operario esperado", operario, buscado);
+        } catch (OperarioInexistenteException e) {
+            Assert.fail("Se emitio una excepcion no esperada");
+        }
+    }
+
+    @Test
+    public void testBuscaOperarioInexistente(){
+        try{
+            Operario buscado = sistema.buscarOperario(operario.getNombreUsuario());
+            Assert.fail("No se emitio la excepcion esperada");
+        } catch (OperarioInexistenteException e) {
+
+        }
+    }
 
 
 }

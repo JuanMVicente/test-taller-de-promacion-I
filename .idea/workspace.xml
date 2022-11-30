@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="Add reset sistema and administrador">
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaOperarios.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaProductos.java" afterDir="false" />
+    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="se corrigieron tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/ResetSingletonInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/ResetInstance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestAdministrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestOperario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestOperario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaComandas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaComandas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Mozo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Mozo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaOperarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaOperarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testMozo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/testMozo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +58,7 @@
       <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Trabajo practico Final\pruebas-unitarias-modelo\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Trabajo practico Final\pruebas-unitarias-modelo\src\test\java\modelo" />
       <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Trabajo practico Final\pruebas-unitarias-modelo\src\main\java" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -73,8 +70,8 @@
       <recent name="test.Mesa" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestSistemaProductos">
-    <configuration name="TestAdministrador" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.testMozo">
+    <configuration name="TestSistemaOperarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
       <extension name="coverage">
         <pattern>
@@ -83,52 +80,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestAdministrador" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestInicializarSistema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pruebas-unitarias-modelo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestInicializarSistema" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestOperario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pruebas-unitarias-modelo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestOperario" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSistemaComandas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pruebas-unitarias-modelo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaComandas" />
+      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaOperarios" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,20 +101,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="testMesa" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.testMesa" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testMozo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.testMozo" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testSueldo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.testSueldo" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.TestAdministrador" />
-      <item itemvalue="JUnit.TestOperario" />
-      <item itemvalue="JUnit.TestSistemaComandas" />
+      <item itemvalue="JUnit.TestSistemaOperarios" />
       <item itemvalue="JUnit.TestSistemaProductos" />
-      <item itemvalue="JUnit.TestInicializarSistema" />
+      <item itemvalue="JUnit.testMesa" />
+      <item itemvalue="JUnit.testMozo" />
+      <item itemvalue="JUnit.testSueldo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.testMozo" />
+        <item itemvalue="JUnit.TestSistemaOperarios" />
+        <item itemvalue="JUnit.testSueldo" />
+        <item itemvalue="JUnit.testMesa" />
         <item itemvalue="JUnit.TestSistemaProductos" />
-        <item itemvalue="JUnit.TestSistemaComandas" />
-        <item itemvalue="JUnit.TestOperario" />
-        <item itemvalue="JUnit.TestAdministrador" />
-        <item itemvalue="JUnit.TestInicializarSistema" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +207,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669778209947</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add reset sistema and administrador">
+      <created>1669780124923</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669780124923</updated>
+    </task>
+    <task id="LOCAL-00007" summary="se corrigieron tests">
+      <created>1669781276577</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669781276577</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +240,7 @@
     <MESSAGE value="add enums" />
     <MESSAGE value="Add reset sistema" />
     <MESSAGE value="Add reset sistema and administrador" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add reset sistema and administrador" />
+    <MESSAGE value="se corrigieron tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="se corrigieron tests" />
   </component>
 </project>

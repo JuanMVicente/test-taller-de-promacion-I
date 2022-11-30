@@ -16,30 +16,26 @@ public class TestOperario {
 	private Sistema sistema;
 
 
-	@BeforeClass
-	public static void setUp() {
-		try {
-			if(!Sistema.isInicializado())
-				Sistema.inicializarSistema("Nombre local");
-		} catch (Exception e) {
-			//Se da por supuesto que la inicializacion del sistema se debe testear antes
-		}
-	}
-
 	@Before
 	public void setup(){
+		try {
+			Sistema.inicializarSistema("Nombre local");
+		} catch (SistemaYaInicializadoException e) {
+			Assert.fail("Error al preparar escenario");
+		}
 		oper = new Operario("Jose","Perez","joseperez1","Cont123");
 		sistema = Sistema.getInstancia();
 	}
 
 	@After
 	public void tearDown() {
+		ResetInstance.reseteSistemaAndAdministrador();
 		oper = null;
 		sistema = null;
 	}
 
 	@Test
-	public void constructor(){
+	public void testConstructor(){
 		String nombre = "pepe";
 		String apellido = "Gonzalez";
 		String nombreUsuario = "PepeGonzalez";
@@ -52,8 +48,7 @@ public class TestOperario {
 	}
 
 	@Test
-	public void iniciaSesionOperarioActivoContraseniaCorrecta(){
-		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+	public void testIniciaSesionOperarioActivoContraseniaCorrecta(){
 		oper.setActivo(true);
 		try {
 			oper.iniciarSesion("Cont1");
@@ -64,8 +59,7 @@ public class TestOperario {
 	}
 
 	@Test
-	public void iniciaSesionOperarioActivoContraseniaIncorrecta(){
-		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+	public void testIniciaSesionOperarioActivoContraseniaIncorrecta(){
 		oper.setActivo(true);
 		try {
 			oper.iniciarSesion("Cont1234");
@@ -78,8 +72,7 @@ public class TestOperario {
 	}
 
 	@Test
-	public void iniciaSesionOperarioInactivoContraseniaCorrecta(){
-		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+	public void testIniciaSesionOperarioInactivoContraseniaCorrecta(){
 		oper.setActivo(false);
 		try {
 			oper.iniciarSesion("Cont1");
@@ -92,8 +85,7 @@ public class TestOperario {
 	}
 
 	@Test
-	public void iniciaSesionOperarioInactivoContraseniaIncorrecta(){
-		Assert.assertNotNull("Error al inicializar el sistema",sistema);
+	public void testIniciaSesionOperarioInactivoContraseniaIncorrecta(){
 		oper.setActivo(false);
 		try {
 			oper.iniciarSesion("Cont1234");
@@ -104,31 +96,31 @@ public class TestOperario {
 	}
 
 	@Test
-	public void verificarContraseniaCorrecta(){
+	public void testVerificarContraseniaCorrecta(){
 		String pass = "Admin1234";
 		Assert.assertTrue("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
 
 	@Test
-	public void verificarContraseniaIncorrecta1(){
+	public void testVerificarContraseniaIncorrecta1(){
 		String pass = "admin123";
 		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
 
 	@Test
-	public void verificarContraseniaIncorrecta2(){
+	public void testVerificarContraseniaIncorrecta2(){
 		String pass = "adm";
 		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
 
 	@Test
-	public void verificarContraseniaIncorrecta3(){
+	public void testVerificarContraseniaIncorrecta3(){
 		String pass = "Administrador123456789";
 		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}
 
 	@Test
-	public void verificarContraseniaIncorrecta4(){
+	public void testVerificarContraseniaIncorrecta4(){
 		String pass = "Adminis";
 		Assert.assertFalse("No retorno lo que se esperaba", Operario.verificarContrasenia(pass));
 	}

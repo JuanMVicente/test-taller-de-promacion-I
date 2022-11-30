@@ -2,26 +2,31 @@ package modelo;
 
 import excepciones.SistemaYaInicializadoException;
 import modelos.Sistema;
-import modelos.enums.Estado;
 import modelos.enums.ModoOperacion;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestInicializarSistema {
 
     Sistema sistema;
 
     @Before
-    public void setup(){}
+    public void setup(){
+
+    }
 
     @After
-    public void tearDown(){}
+    public void tearDown(){
+        ResetInstance.reseteSistemaAndAdministrador();
+    }
 
     @Test
-    public void InicializarSistema(){
+    public void testInicializarSistema(){
         String nombreLocal = "Nombre Local";
         try {
             assertFalse("El sistema comienza inicializado cuando no corresponde", Sistema.isInicializado());
@@ -43,13 +48,12 @@ public class TestInicializarSistema {
     }
 
     @Test
-    public void InicializarSistemaYaInizializado(){
+    public void testInicializarSistemaYaInizializado(){
         String nombreLocal = "Nombre local";
         try{
-            if(!Sistema.isInicializado())
                 Sistema.inicializarSistema(nombreLocal);
         } catch (SistemaYaInicializadoException e) {
-            fail("Error al inicializar el sistema");
+            fail("Error al crear el escenario");
         }
         try{
             Sistema.inicializarSistema(nombreLocal);

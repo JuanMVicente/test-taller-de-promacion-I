@@ -5,7 +5,7 @@ import modelos.Sistema;
 
 import java.lang.reflect.Field;
 
-public class ResetSingletonInstance {
+public class ResetInstance {
 
     public static void reseteSistemaAndAdministrador(){
         resetSistema();

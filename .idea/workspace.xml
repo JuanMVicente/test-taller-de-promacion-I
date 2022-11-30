@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="add enums">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaComandas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaProductosEscenario1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaProductosEscenario2.java" afterDir="false" />
+    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="Add reset sistema and administrador">
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaOperarios.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaProductos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Sistema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestPedido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/ResetSingletonInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/ResetInstance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestAdministrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestAdministrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestOperario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestOperario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaComandas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaComandas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,22 @@
       <recent name="test.Mesa" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestInicializarSistema">
+  <component name="RunManager" selected="JUnit.TestSistemaProductos">
+    <configuration name="TestAdministrador" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.TestAdministrador" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestInicializarSistema" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
       <extension name="coverage">
@@ -89,7 +104,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPedido" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestOperario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
       <extension name="coverage">
         <pattern>
@@ -98,13 +113,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestPedido" />
+      <option name="MAIN_CLASS_NAME" value="modelo.TestOperario" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestSistemaProductosEscenario2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSistemaComandas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
       <extension name="coverage">
         <pattern>
@@ -113,35 +128,41 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaProductosEscenario2" />
+      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaComandas" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in pruebas-unitarias-modelo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSistemaProductos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaProductos" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="modelo in pruebas-unitarias-modelo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pruebas-unitarias-modelo" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/modelo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="JUnit.TestAdministrador" />
+      <item itemvalue="JUnit.TestOperario" />
+      <item itemvalue="JUnit.TestSistemaComandas" />
+      <item itemvalue="JUnit.TestSistemaProductos" />
+      <item itemvalue="JUnit.TestInicializarSistema" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestSistemaProductos" />
+        <item itemvalue="JUnit.TestSistemaComandas" />
+        <item itemvalue="JUnit.TestOperario" />
+        <item itemvalue="JUnit.TestAdministrador" />
         <item itemvalue="JUnit.TestInicializarSistema" />
-        <item itemvalue="JUnit.java in pruebas-unitarias-modelo" />
-        <item itemvalue="JUnit.TestSistemaProductosEscenario2" />
-        <item itemvalue="JUnit.modelo in pruebas-unitarias-modelo" />
-        <item itemvalue="JUnit.TestPedido" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +189,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669406447443</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add enums">
+      <created>1669738919176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669738919176</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add enums">
+      <created>1669765105293</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669765105293</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add reset sistema and administrador">
+      <created>1669778209947</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669778209947</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +227,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="firts commit" />
     <MESSAGE value="add enums" />
-    <option name="LAST_COMMIT_MESSAGE" value="add enums" />
+    <MESSAGE value="Add reset sistema" />
+    <MESSAGE value="Add reset sistema and administrador" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add reset sistema and administrador" />
   </component>
 </project>

@@ -11,11 +11,12 @@ public class TestSistemaComandas {
     private Sistema sistema;
     private Mesa mesa;
 
-    @BeforeClass
+    @Before
     public void setup(){
         try {
             Sistema.inicializarSistema("local");
         } catch (SistemaYaInicializadoException ignored) {
+            Assert.fail("Error al preparar escenario");
         }
         sistema = Sistema.getInstancia();
         sistema.setModoOperacion(ModoOperacion.ADMINISTRADOR);
@@ -27,13 +28,15 @@ public class TestSistemaComandas {
         }
     }
 
-    @AfterClass
-    public void tearDown(){
+    @After
+    public void teardown(){
+        ResetInstance.reseteSistemaAndAdministrador();
+        mesa = null;
         sistema = null;
     }
 
     @Test
-    public void crearComandaConMesaExistenteLibre(){
+    public void testCrearComandaConMesaExistenteLibre(){
         try {
             sistema.crearComanda(mesa);
             Assert.assertTrue("La mesa no se ocupo correctamente",mesa.estaOcupada());
@@ -44,7 +47,7 @@ public class TestSistemaComandas {
     }
 
     @Test
-    public void crearComandaConMesaNoExistenteLibre(){
+    public void testCrearComandaConMesaNoExistenteLibre(){
         Mesa nueva = new Mesa(4,5);
         try {
             sistema.agregarMesa(nueva);
@@ -60,7 +63,7 @@ public class TestSistemaComandas {
     }
 
     @Test
-    public void crearComandaConMesaExistenteOcupada(){
+    public void testCrearComandaConMesaExistenteOcupada(){
         mesa.ocupar();
         try {
             sistema.crearComanda(mesa);
@@ -73,7 +76,7 @@ public class TestSistemaComandas {
     }
 
     @Test
-    public void cerrarComandaMesaExistenteOcupada(){
+    public void testCerrarComandaMesaExistenteOcupada(){
         try{
             sistema.crearComanda(mesa);
         } catch (MesaOcupadaException | MesaInexistenteException e) {
@@ -90,7 +93,7 @@ public class TestSistemaComandas {
     }
 
     @Test
-    public void cerrarComandaMesaInexistente(){
+    public void testCerrarComandaMesaInexistente(){
         Mesa nueva = new Mesa(8,5);
         nueva.ocupar();
         try {
@@ -104,7 +107,7 @@ public class TestSistemaComandas {
     }
 
     @Test
-    public void cerrarComandaMesaNoOcupada(){
+    public void testCerrarComandaMesaNoOcupada(){
         mesa.desocupar();
         try{
             sistema.cerrarComanda(mesa);

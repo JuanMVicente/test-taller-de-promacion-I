@@ -1,25 +1,19 @@
 package modelo;
 
-import excepciones.SistemaYaInicializadoException;
-import modelos.Mesa;
-import modelos.Pedido;
-import modelos.PromocionTemporal;
-import modelos.Sistema;
-import modelos.enums.Dia;
-import modelos.enums.FormaPago;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import excepciones.ProductoInexistenteException;
+import excepciones.SistemaYaInicializadoException;
 
 public class testSistemaPedidos {
 
     private Pedido pedido;
     private Mesa mesa;
     private Sistema sistema;
+    private Producto prod;
 
     @Before
     public void setup(){
@@ -30,6 +24,8 @@ public class testSistemaPedidos {
         }
         sistema = Sistema.getInstancia();
         mesa = new Mesa(3,4);
+        prod = new Producto("prod1",100,200,30);
+        pedido = new Pedido(prod,5);
     }
 
     @After
@@ -42,18 +38,48 @@ public class testSistemaPedidos {
 
     @Test
     public void testAgregarPedido(){
-        Assert.fail();
+    	sistema.crearComanda(mesa);
+    	try{
+    		
+    		sistema.agregarPedido(mesa,pedido);
+    		Assert.assertTrue("No se ha añadido a la colección", sistema.getComandas().containsValue(pedido));
+    	}catch(ComandaInexistenteException e) {
+    		Assert.fail("Se emitio una excepción no correspondida");
+    		
+    	}catch(StockInsuficienteException e) {
+    		Assert.fail("Se emitio una excepción no correspondida");
+    	}
     }
 
     @Test
     public void testAgregarPedidoComandaInexistente(){
-        Assert.fail();
+    	try{
+    		
+    		sistema.agregarPedido(mesa,pedido);
+    		Assert.fail("No se emitio la excepción correspondiente");
+    	}catch(ComandaInexistenteException e) {
+
+    		
+    	}catch(StockInsuficienteException e) {
+    		Assert.fail("Se emitio una excepción no correspondida");
+    	}
 
     }
 
     @Test
     public void testAgregarPedidoStockInsuficiente(){
-        Assert.fail();
+    	sistema.crearComanda(mesa);
+    	Pedido pedido1 = new Pedido(prod,100);
+    	try{
+    		
+    		sistema.agregarPedido(mesa,pedido1);
+    		Assert.fail("No se emitio la excepción correspondiente");
+    	}catch(ComandaInexistenteException e) {
+
+    		Assert.fail("Se emitio una excepción no correspondida");
+    	}catch(StockInsuficienteException e) {
+    		
+    	}
 
     }
 }

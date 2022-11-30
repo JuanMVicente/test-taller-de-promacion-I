@@ -65,6 +65,8 @@ public class PromocionTemporal extends Promocion {
         assert porcentajeDescuento <= 100 : "El porcentaje de descuento de la promocion temporal no puede ser mayor a 100";
     }
 
+    //METODOS AGREGADOS PARA TESTEAR
+
     public String getNombre() {
         return nombre;
     }

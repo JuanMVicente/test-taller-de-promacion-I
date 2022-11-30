@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="Se corrigio test">
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testProducto.java" afterDir="false" />
+    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="Se agrega reporte de cobertura">
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testFactura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/testSistemaPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaPedidos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669802450621</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Se agrega reporte de cobertura">
+      <created>1669806614660</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1669806614660</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -308,10 +313,11 @@
     <MESSAGE value="se corrigieron tests" />
     <MESSAGE value="Modificaciones del modelo" />
     <MESSAGE value="Se corrigio test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se corrigio test" />
+    <MESSAGE value="Se agrega reporte de cobertura" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agrega reporte de cobertura" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pruebas_unitarias_modelo$test_in_pruebas_unitarias_modelo.ic" NAME="test in pruebas-unitarias-modelo Coverage Results" MODIFIED="1669797223019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/pruebas_unitarias_modelo$modelo_in_pruebas_unitarias_modelo.ic" NAME="modelo in pruebas-unitarias-modelo Coverage Results" MODIFIED="1669803701370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/pruebas_unitarias_modelo$modelo_in_pruebas_unitarias_modelo.ic" NAME="modelo in pruebas-unitarias-modelo Coverage Results" MODIFIED="1669806223417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

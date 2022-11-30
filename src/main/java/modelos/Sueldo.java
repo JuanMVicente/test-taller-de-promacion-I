@@ -39,4 +39,8 @@ public class Sueldo {
     private void verificarInvariantes() {
         assert remuneracionBasica >= 0 : "La remuneración básica no puede ser negativa";
     }
+
+    public double getRemuneracionBasica() {
+        return remuneracionBasica;
+    }
 }

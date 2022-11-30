@@ -1,7 +1,9 @@
-package modelos;
+package modelo;
 
 import static org.junit.Assert.*;
 
+import modelos.Mesa;
+import modelos.Sistema;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,60 +13,42 @@ import excepciones.SistemaYaInicializadoException;
 import junit.framework.Assert;
 import modelos.enums.ModoOperacion;
 
+import java.util.Date;
+
 public class testMesa {
-	
-	
+
 	private Sistema sistema;
-
-
-    @BeforeClass
-    public void setup(){
-        try {
-            Sistema.inicializarSistema("local");
-        } catch (SistemaYaInicializadoException ignored) {
-        }
-        sistema = Sistema.getInstancia();
-        sistema.setModoOperacion(ModoOperacion.ADMINISTRADOR);
-    }
-    
+	private Mesa mesa;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
+		mesa = new Mesa(4, 5);
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
+		mesa = null;
 	}
 
 	@Test
-	public void constructor() {
+	public void testConstructor() {
 		int nroMesa=4;
 		int capacidad=3;
 		Mesa mesa = new Mesa(nroMesa,capacidad);
 		Assert.assertEquals(nroMesa, mesa.getNroMesa());
 		Assert.assertEquals(capacidad,mesa.getCapacidad());
 		Assert.assertFalse(mesa.estaOcupada());
-		
 	}
 	
 	@Test
-	public void ocupar() {
-		int nroMesa=4;
-		int capacidad=3;
-		Mesa mesa = new Mesa(nroMesa,capacidad);
+	public void testOcupar() {
 		mesa.ocupar();
 		Assert.assertTrue(mesa.estaOcupada());
-		
-		
 	}
-	
-	public void desocupar() {
-		int nroMesa=4;
-		int capacidad=3;
-		Mesa mesa = new Mesa(nroMesa,capacidad);
+
+	@Test
+	public void testDesocupar() {
 		mesa.desocupar();
 		Assert.assertFalse(mesa.estaOcupada());
-		
-		
 	}
 }

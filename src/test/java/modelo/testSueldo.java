@@ -1,7 +1,9 @@
-package modelos;
+package modelo;
 
 import static org.junit.Assert.fail;
 
+import modelos.Sistema;
+import modelos.Sueldo;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -11,54 +13,35 @@ import excepciones.SistemaYaInicializadoException;
 import modelos.enums.ModoOperacion;
 
 public class testSueldo {
-	
+
 	private Sistema sistema;
 
-
-    @BeforeClass
-    public void setup(){
-        try {
-            Sistema.inicializarSistema("local");
-        } catch (SistemaYaInicializadoException ignored) {
-        }
-        sistema = Sistema.getInstancia();
-        sistema.setModoOperacion(ModoOperacion.ADMINISTRADOR);
-    }
-    
-    
-       
-
-	
-	@After
-	public void tearDown() throws Exception {
-		
-	}
-
 	@Test
-	public void constructor() {
+	public void testConstructor() {
 		double remuneracionbasica = 1000;
 		Sueldo sueldo = new Sueldo(remuneracionbasica);
 		Assert.assertEquals(remuneracionbasica, sueldo.getRemuneracionBasica(),0.5);
-		
+
 	}
-	
+
 	@Test
-	public void calcualrSueldo1() {
+	public void testCalcualrSueldo1() {
 		double remuneracionbasica = 100;
 		Sueldo sueldo = new Sueldo(remuneracionbasica);
-		int cantHijos =3;
-		double sueldoP= sueldo.calcularSueldo(cantHijos);
-		Assert.assertEquals(remuneracionbasica, sueldo.getRemuneracionBasica(),0.5);
-		
+		int cantHijos = 3;
+        double expected = remuneracionbasica + remuneracionbasica * cantHijos * 0.05;
+		Assert.assertEquals("No se calculo el sueldo como correspondia", expected, sueldo.calcularSueldo(cantHijos),0.5);
+
 	}
-	
-	public void calcualrSueldo2() {
+
+    @Test
+	public void testCalcualrSueldo2() {
 		double remuneracionbasica = 100;
 		Sueldo sueldo = new Sueldo(remuneracionbasica);
-		int cantHijos =-5;
-		double sueldoP= sueldo.calcularSueldo(cantHijos);
-		Assert.assertEquals(remuneracionbasica, sueldo.getRemuneracionBasica(),0.5);
-		
+		int cantHijos = -5;
+        double expected = remuneracionbasica + remuneracionbasica * cantHijos * 0.05;
+        Assert.assertEquals("No se calculo el sueldo como correspondia", expected, sueldo.calcularSueldo(cantHijos),0.5);
+
 	}
 
 

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="se corrigieron tests">
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaAsignacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaMesas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaMozos.java" afterDir="false" />
+    <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="se agregaron tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaInicializar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/PromocionProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/PromocionProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Sueldo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Sueldo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,18 +70,11 @@
       <recent name="test.Mesa" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.testSistemaAsignacion">
-    <configuration name="TestSistemaOperarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.modelo in pruebas-unitarias-modelo">
+    <configuration name="modelo in pruebas-unitarias-modelo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaOperarios" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/modelo" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,19 +140,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TestSistemaOperarios" />
       <item itemvalue="JUnit.testMozo" />
       <item itemvalue="JUnit.testSistemaAsignacion" />
       <item itemvalue="JUnit.testSistemaMesas" />
       <item itemvalue="JUnit.testSistemaMozos" />
+      <item itemvalue="JUnit.modelo in pruebas-unitarias-modelo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.modelo in pruebas-unitarias-modelo" />
         <item itemvalue="JUnit.testSistemaAsignacion" />
         <item itemvalue="JUnit.testSistemaMesas" />
         <item itemvalue="JUnit.testSistemaMozos" />
         <item itemvalue="JUnit.testMozo" />
-        <item itemvalue="JUnit.TestSistemaOperarios" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669784189959</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="se agregaron tests">
+      <created>1669790727341</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669790727341</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,6 +248,7 @@
     <MESSAGE value="Add reset sistema" />
     <MESSAGE value="Add reset sistema and administrador" />
     <MESSAGE value="se corrigieron tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="se corrigieron tests" />
+    <MESSAGE value="se agregaron tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agregaron tests" />
   </component>
 </project>

@@ -50,6 +50,8 @@ public class PromocionProducto extends Promocion {
         verificarInvariantes();
     }
 
+    //METODOS AGREGADOS PARA TESTEAR
+
     public boolean isAplicaDosPorUno() {
         return aplicaDosPorUno;
     }

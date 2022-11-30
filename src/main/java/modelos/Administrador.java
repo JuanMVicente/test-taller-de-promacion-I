@@ -89,6 +89,8 @@ public class Administrador extends Operario {
         return inicializado;
     }
 
+    //METODOS AGREGADOS PARA TESTEAR
+
     public static Administrador getInstancia() {
         return instancia;
     }

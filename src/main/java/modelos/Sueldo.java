@@ -40,6 +40,8 @@ public class Sueldo {
         assert remuneracionBasica >= 0 : "La remuneración básica no puede ser negativa";
     }
 
+    //METODOS AGREGADOS PARA TESTEAR
+
     public double getRemuneracionBasica() {
         return remuneracionBasica;
     }

@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21f3cfaf-3f52-41d8-956b-81de66109125" name="Changes" comment="se corrigieron tests">
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaAsignacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaMesas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/modelo/testSistemaMozos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelos/Mozo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelos/Mozo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaOperarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaOperarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testMozo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/testMozo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/modelo/TestInicializarSistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/modelo/TestSistemaInicializar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <recent name="test.Mesa" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.testMozo">
+  <component name="RunManager" selected="JUnit.testSistemaAsignacion">
     <configuration name="TestSistemaOperarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
       <extension name="coverage">
@@ -81,36 +82,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="modelo" />
       <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaOperarios" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestSistemaProductos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pruebas-unitarias-modelo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.TestSistemaProductos" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testMesa" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pruebas-unitarias-modelo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.testMesa" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -131,7 +102,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testSueldo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testSistemaAsignacion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pruebas-unitarias-modelo" />
       <extension name="coverage">
         <pattern>
@@ -140,7 +111,37 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="modelo" />
-      <option name="MAIN_CLASS_NAME" value="modelo.testSueldo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.testSistemaAsignacion" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testSistemaMesas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.testSistemaMesas" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testSistemaMozos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pruebas-unitarias-modelo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="modelo" />
+      <option name="MAIN_CLASS_NAME" value="modelo.testSistemaMozos" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,18 +149,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.TestSistemaOperarios" />
-      <item itemvalue="JUnit.TestSistemaProductos" />
-      <item itemvalue="JUnit.testMesa" />
       <item itemvalue="JUnit.testMozo" />
-      <item itemvalue="JUnit.testSueldo" />
+      <item itemvalue="JUnit.testSistemaAsignacion" />
+      <item itemvalue="JUnit.testSistemaMesas" />
+      <item itemvalue="JUnit.testSistemaMozos" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.testSistemaAsignacion" />
+        <item itemvalue="JUnit.testSistemaMesas" />
+        <item itemvalue="JUnit.testSistemaMozos" />
         <item itemvalue="JUnit.testMozo" />
         <item itemvalue="JUnit.TestSistemaOperarios" />
-        <item itemvalue="JUnit.testSueldo" />
-        <item itemvalue="JUnit.testMesa" />
-        <item itemvalue="JUnit.TestSistemaProductos" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669781276577</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="se corrigieron tests">
+      <created>1669784189959</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669784189959</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

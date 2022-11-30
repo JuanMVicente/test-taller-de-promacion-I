@@ -42,16 +42,18 @@ public class testSistemaPedidos {
 
     @Test
     public void agregarPedido(){
-
+        Assert.fail();
     }
 
     @Test
     public void agregarPedidoComandaInexistente(){
+        Assert.fail();
 
     }
 
     @Test
     public void agregarPedidoStockInsuficiente(){
+        Assert.fail();
 
     }
 }

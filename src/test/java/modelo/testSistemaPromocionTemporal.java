@@ -40,11 +40,13 @@ public class testSistemaPromocionTemporal {
 
     @Test
     public void testAgregarPromocionTemporal(){
+        Assert.fail();
 
     }
 
     @Test
     public void testEliminarPromocionTemporal(){
+        Assert.fail();
 
     }
 }

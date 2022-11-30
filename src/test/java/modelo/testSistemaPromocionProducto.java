@@ -40,21 +40,25 @@ public class testSistemaPromocionProducto {
 
     @Test
     public void testAgregarPromocionProducto(){
+        Assert.fail();
 
     }
 
     @Test
     public void testAgregarPromocionProductoInexistente(){
+        Assert.fail();
 
     }
 
     @Test
     public void testEliminarPromocionProducto(){
+        Assert.fail();
 
     }
 
     @Test
     public void testEliminarPromocionProductoInexistente(){
+        Assert.fail();
 
     }
 }

@@ -1,0 +1,154 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Promocion</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Promocion (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Promocion</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (4/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (8/10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;import modelos.enums.Dia;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * Clase que representa una promocion. &lt;br&gt;
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt; &lt;br&gt;
+&nbsp; * diasPromo != null
+&nbsp; * diasPromo.size() &gt; 0
+&nbsp; */
+&nbsp;public abstract class Promocion {
+&nbsp;    private int id;
+&nbsp;    private boolean activa;
+&nbsp;    private List&lt;Dia&gt; diasPromo;
+<b class="fc">&nbsp;    private static int ultimoId = 0;</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor de la clase Promocion. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * diasPromo != null &lt;br&gt;
+&nbsp;     * diasPromo.size() &gt; 0 &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea una nueva promocion con los datos ingresados. &lt;br&gt;
+&nbsp;     * @param diasPromo Dias en los que se aplica la promocion.
+&nbsp;     */
+<b class="fc">&nbsp;    public Promocion(List&lt;Dia&gt; diasPromo) {</b>
+<b class="fc">&nbsp;        this.id = ultimoId;</b>
+<b class="fc">&nbsp;        this.activa = true;</b>
+<b class="fc">&nbsp;        this.diasPromo = diasPromo;</b>
+&nbsp;
+<b class="fc">&nbsp;        ultimoId++;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Dia&gt; getDiasPromo() {
+<b class="fc">&nbsp;        return diasPromo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isActiva() {
+<b class="fc">&nbsp;        return activa;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void activar() {
+<b class="nc">&nbsp;        activa = true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void desactivar() {
+<b class="nc">&nbsp;        activa = false;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

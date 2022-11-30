@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Administrador</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Administrador (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Administrador</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (7/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95,5%
+  </span>
+  <span class="absValue">
+    (21/22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;import excepciones.AdministradorExistenteException;
+&nbsp;import excepciones.ContraseniaIncorrectaException;
+&nbsp;import excepciones.UsuarioInactivoException;
+&nbsp;import modelos.enums.ModoOperacion;
+&nbsp;
+&nbsp;/**
+&nbsp; * Clase que representa a un administrador del sistema.
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt;
+&nbsp; * Existe una unica instancia que se crea al inicio del programa.
+&nbsp; */
+<b class="fc">&nbsp;public class Administrador extends Operario {</b>
+&nbsp;    private boolean establecioContrasenia;
+&nbsp;    private static Administrador instancia;
+<b class="fc">&nbsp;    private static boolean inicializado = false;</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Crea un administrador con los valores por defecto.
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt;
+&nbsp;     * establecioContrasenia == false
+&nbsp;     */
+&nbsp;    private Administrador() {
+<b class="fc">&nbsp;        super(&quot;ADMIN&quot;, &quot;ADMIN&quot;, &quot;ADMIN&quot;, &quot;ADMIN1234&quot;);</b>
+<b class="fc">&nbsp;        establecioContrasenia = false;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert !establecioContrasenia : &quot;No se estableció el atributo &#39;establecioContrasenia&#39;&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Inicializa la instancia del administrador.
+&nbsp;     * &lt;b&gt;Post&lt;/b&gt;
+&nbsp;     * Se crea una instancia del administrador.
+&nbsp;     *
+&nbsp;     * @return Instancia del administrador.
+&nbsp;     * @throws AdministradorExistenteException Si ya existe una instancia del administrador.
+&nbsp;     */
+&nbsp;    public static Administrador crearAdministrador() throws AdministradorExistenteException {
+<b class="fc">&nbsp;        if (inicializado)</b>
+<b class="fc">&nbsp;            throw new AdministradorExistenteException();</b>
+&nbsp;
+<b class="fc">&nbsp;        Administrador administrador = new Administrador();</b>
+<b class="fc">&nbsp;        inicializado = true;</b>
+<b class="fc">&nbsp;        instancia = administrador;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert instancia != null : &quot;No se creó la instancia del administrador&quot;;</b>
+<b class="fc">&nbsp;        return administrador;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Inicia sesion en el sistema.
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt;
+&nbsp;     * establecioContrasenia == true
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt;
+&nbsp;     * Se establece el modo de operacion en modo administrador.
+&nbsp;     *
+&nbsp;     * @param contrasenia La contraseña del administrador.
+&nbsp;     * @throws UsuarioInactivoException       Si el administrador no se encuentra activo.
+&nbsp;     * @throws ContraseniaIncorrectaException Si la contraseña ingresada es incorrecta.
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void iniciarSesion(String contrasenia) throws UsuarioInactivoException, ContraseniaIncorrectaException {
+<b class="fc">&nbsp;        assert establecioContrasenia : &quot;No se estableció la contraseña del administrador&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        super.iniciarSesion(contrasenia);</b>
+<b class="fc">&nbsp;        Sistema.getInstancia().setModoOperacion(ModoOperacion.ADMINISTRADOR);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert Sistema.getInstancia().getModoOperacion() == ModoOperacion.ADMINISTRADOR : &quot;No se estableció el modo de operación en modo administrador&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Establece la contraseña del administrador.
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt;
+&nbsp;     * establecioContrasenia == true
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public void cambiarContrasenia(String contraseniaNueva) {
+<b class="fc">&nbsp;        super.cambiarContrasenia(contraseniaNueva);</b>
+<b class="fc">&nbsp;        establecioContrasenia = true;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert establecioContrasenia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Devuelve si el administrador ya se inicializo.
+&nbsp;     *
+&nbsp;     * @return true si el administrador ya se inicializo, false en caso contrario.
+&nbsp;     */
+&nbsp;    public static boolean isInicializado() {
+<b class="nc">&nbsp;        return inicializado;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //METODOS AGREGADOS PARA TESTEAR
+&nbsp;
+&nbsp;    public static Administrador getInstancia() {
+<b class="fc">&nbsp;        return instancia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isEstablecioContrasenia() {
+<b class="fc">&nbsp;        return establecioContrasenia;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

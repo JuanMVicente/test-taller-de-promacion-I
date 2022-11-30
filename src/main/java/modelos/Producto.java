@@ -157,4 +157,10 @@ public class Producto {
         assert this.precioVenta > this.precioCosto : "El precio de venta del producto no puede ser menor o igual al precio de costo.";
         assert this.stock >= 0 : "El stock del producto no puede ser negativo.";
     }
+
+    //METODOS AGREGADOS PARA TESTEAR
+
+    public int getStock() {
+        return stock;
+    }
 }

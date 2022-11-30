@@ -1,0 +1,762 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Sistema</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Sistema (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Sistema</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81,1%
+  </span>
+  <span class="absValue">
+    (30/37)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84,7%
+  </span>
+  <span class="absValue">
+    (171/202)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;import excepciones.*;
+&nbsp;import modelos.enums.Dia;
+&nbsp;import modelos.enums.Estado;
+&nbsp;import modelos.enums.ModoOperacion;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;/**
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt; &lt;br&gt;
+&nbsp; * nombreLocal != null &lt;br&gt;
+&nbsp; * nombreLocal != &quot;&quot; &lt;br&gt;
+&nbsp; * mozos != null &lt;br&gt;
+&nbsp; * mesas != null &lt;br&gt;
+&nbsp; * productos != null &lt;br&gt;
+&nbsp; * operarios != null &lt;br&gt;
+&nbsp; * asignacionMesas != null &lt;br&gt;
+&nbsp; * comandas != null &lt;br&gt;
+&nbsp; * promocionesProducto != null &lt;br&gt;
+&nbsp; * promocionesTemporales != null &lt;br&gt;
+&nbsp; * mozos.size() &lt;= 6 &lt;br&gt;
+&nbsp; * Al menos 2 productos deberán estar promocionados. &lt;br&gt;
+&nbsp; * Se establecen días de promocion para todos los productos. &lt;br&gt;
+&nbsp; */
+<b class="fc">&nbsp;public class Sistema {</b>
+&nbsp;
+&nbsp;    // TODO: Agregar throws para OperacionNoAutorizadaException
+&nbsp;
+&nbsp;    private String nombreLocal;
+&nbsp;    private List&lt;Mozo&gt; mozos;
+&nbsp;    private List&lt;Mesa&gt; mesas;
+&nbsp;    private List&lt;Producto&gt; productos;
+&nbsp;    private List&lt;Operario&gt; operarios;
+&nbsp;    private Map&lt;Mozo, List&lt;Mesa&gt;&gt; asignacionMesas;
+&nbsp;    private Map&lt;Mesa, Comanda&gt; comandas;
+&nbsp;    private Map&lt;Producto, List&lt;PromocionProducto&gt;&gt; promocionesProducto;
+&nbsp;    private List&lt;PromocionTemporal&gt; promocionesTemporales;
+&nbsp;    private Administrador administrador;
+&nbsp;    private ModoOperacion modoOperacion;
+&nbsp;
+<b class="fc">&nbsp;    private static Sistema instancia = null;</b>
+&nbsp;
+<b class="fc">&nbsp;    private Sistema() {</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Devuelve la instancia del sistema.
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt;
+&nbsp;     * El sistema ya fue inicializado.
+&nbsp;     *
+&nbsp;     * @return Instancia del sistema.
+&nbsp;     */
+&nbsp;    public static Sistema getInstancia() {
+<b class="fc">&nbsp;        assert isInicializado() : &quot;El sistema no ha sido inicializado&quot;;</b>
+<b class="fc">&nbsp;        return instancia;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Devuelve verdadero si el sistema ya fue inicializado. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @return Si el sistema ya fue inicializado.
+&nbsp;     */
+&nbsp;    public static boolean isInicializado() {
+<b class="fc">&nbsp;        return instancia != null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Inicializa el sistema con en nombre indicado y sus colecciones. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * nombreLocal != null &lt;br&gt;
+&nbsp;     * nombreLocal != &quot;&quot; &lt;br&gt;
+&nbsp;     * &lt;b&gt;post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea el sistema con el nombre indicado y las colecciones vacías. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param nombreLocal Nombre del local.
+&nbsp;     * @throws SistemaYaInicializadoException si el sistema ya fue inicializado.
+&nbsp;     */
+&nbsp;    public static void inicializarSistema(String nombreLocal) throws SistemaYaInicializadoException {
+<b class="fc">&nbsp;        assert nombreLocal != null : &quot;El nombre del local no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert !nombreLocal.equals(&quot;&quot;) : &quot;El nombre del local no puede ser vacío&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (instancia != null) {</b>
+<b class="fc">&nbsp;            throw new SistemaYaInicializadoException();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        instancia = new Sistema();</b>
+&nbsp;
+<b class="fc">&nbsp;        instancia.nombreLocal = nombreLocal;</b>
+<b class="fc">&nbsp;        instancia.mozos = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.mesas = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.productos = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.operarios = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.asignacionMesas = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.comandas = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.promocionesProducto = new HashMap&lt;&gt;();</b>
+<b class="fc">&nbsp;        instancia.promocionesTemporales = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            instancia.administrador = Administrador.crearAdministrador();</b>
+<b class="nc">&nbsp;        } catch (AdministradorExistenteException e) {</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        instancia.modoOperacion = ModoOperacion.OPERARIO;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert instancia.nombreLocal == nombreLocal : &quot;El nombre del local no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.mozos != null : &quot;La lista de mozos no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.mesas != null : &quot;La lista de mesas no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.productos != null : &quot;La lista de productos no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.operarios != null : &quot;La lista de operarios no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.asignacionMesas != null : &quot;La asignación de mesas no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.comandas != null : &quot;La lista de comandas no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.promocionesProducto != null : &quot;La lista de promociones no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.administrador != null : &quot;El administrador no se inicializó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert instancia.modoOperacion == ModoOperacion.OPERARIO : &quot;El modo administrador no se inicializó correctamente&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        instancia.verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega un mozo al sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mozo != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega el mozo al sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param mozo El mozo a agregar.
+&nbsp;     * @throws MozoExistenteException         Si el mozo a agregar ya existe.
+&nbsp;     * @throws MaximaCantidadMozosException   Si se supera la cantidad máxima de mozos.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el modo de operación no es administrador.
+&nbsp;     */
+&nbsp;    public void agregarMozo(Mozo mozo) throws MozoExistenteException, MaximaCantidadMozosException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert mozo != null : &quot;El mozo no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (mozos.contains(mozo))</b>
+<b class="fc">&nbsp;            throw new MozoExistenteException(mozo);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (mozos.size() == 6)</b>
+<b class="fc">&nbsp;            throw new MaximaCantidadMozosException(mozos.size());</b>
+&nbsp;
+<b class="fc">&nbsp;        mozos.add(mozo);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert mozos.contains(mozo) : &quot;El mozo no se agregó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Elimina un mozo del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mozo != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se elimina el mozo del sistema. &lt;br&gt;
+&nbsp;     * @param mozo El mozo a eliminar.
+&nbsp;     * @throws MozoInexistenteException Si el mozo a eliminar no existe.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el usuario no tiene permisos para realizar la operación.
+&nbsp;     */
+&nbsp;    public void eliminarMozo(Mozo mozo) throws MozoInexistenteException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert mozo != null : &quot;El mozo no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mozos.contains(mozo))</b>
+<b class="fc">&nbsp;            throw new MozoInexistenteException(mozo);</b>
+&nbsp;
+<b class="fc">&nbsp;        mozos.remove(mozo);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert !mozos.contains(mozo) : &quot;El mozo no se eliminó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega un producto al sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * producto != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega el producto al sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param producto El producto a agregar.
+&nbsp;     * @throws ProductoExistenteException     Si el producto ya existe.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el sistema no está en modo administrador.
+&nbsp;     */
+&nbsp;    public void agregarProducto(Producto producto) throws ProductoExistenteException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert producto != null : &quot;El producto no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (productos.contains(producto))</b>
+<b class="fc">&nbsp;            throw new ProductoExistenteException(producto);</b>
+&nbsp;
+<b class="fc">&nbsp;        productos.add(producto);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert productos.contains(producto) : &quot;El producto no se agregó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Elimina un producto del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * producto != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se elimina el producto del sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param producto El producto a eliminar.
+&nbsp;     * @throws ProductoInexistenteException   Si el producto no existe.
+&nbsp;     * @throws ProductoEnComandaException     Si el producto está asociado a una comanda.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el sistema no está en modo administrador.
+&nbsp;     */
+&nbsp;    public void eliminarProducto(Producto producto) throws ProductoInexistenteException, ProductoEnComandaException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert producto != null : &quot;El producto no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert productos.contains(producto) : &quot;El producto no se encuentra en el sistema&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+&nbsp;        // TODO: Verificar que el producto no esté en una comanda.
+&nbsp;
+<b class="fc">&nbsp;        if (!productos.contains(producto)) {</b>
+<b class="nc">&nbsp;            throw new ProductoInexistenteException(producto);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // TODO: Verifica que el producto no esté asociado a una comanda.
+&nbsp;
+<b class="fc">&nbsp;        productos.remove(producto);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert !productos.contains(producto) : &quot;El producto no se eliminó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Establece el estado de un mozo. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mozo != null &lt;br&gt;
+&nbsp;     * estado != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se establece el estado del mozo. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param mozo   El mozo cuyo estado se desea cambiar.
+&nbsp;     * @param estado El nuevo estado del mozo.
+&nbsp;     * @throws MozoInexistenteException Si el mozo no existe.
+&nbsp;     */
+&nbsp;    public void establecerEstadoMozo(Mozo mozo, Estado estado) throws MozoInexistenteException {
+<b class="fc">&nbsp;        assert mozo != null : &quot;El mozo no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert estado != null : &quot;El estado no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mozos.contains(mozo))</b>
+<b class="fc">&nbsp;            throw new MozoInexistenteException(mozo);</b>
+&nbsp;
+<b class="fc">&nbsp;        mozo.setEstado(estado);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert mozo.getEstado() == estado : &quot;El estado no se estableció&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega una mesa al sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mesa != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega la mesa al sistema. &lt;br&gt;
+&nbsp;     * @param mesa La mesa a agregar.
+&nbsp;     * @throws MesaRepetidaException si la mesa ya está en el sistema
+&nbsp;     * @throws OperacionNoAutorizadaException si el sistema no está en modo administrador
+&nbsp;     */
+&nbsp;    public void agregarMesa(Mesa mesa) throws MesaRepetidaException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert mesa != null : &quot;La mesa no puede ser nula&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (mesas.stream().anyMatch(m -&gt; m.getNroMesa() == mesa.getNroMesa())) {</b>
+<b class="fc">&nbsp;            throw new MesaRepetidaException();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        mesas.add(mesa);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert mesas.contains(mesa) : &quot;La mesa no se agregó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Elimina una mesa del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mesa != null &lt;br&gt;
+&nbsp;     * La mesa debe estar en el sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se elimina la mesa del sistema. &lt;br&gt;
+&nbsp;     * @param mesa La mesa a eliminar.
+&nbsp;     * @throws MesaInexistenteException Si la mesa no existe.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el sistema no está en modo administrador.
+&nbsp;     */
+&nbsp;    public void eliminarMesa(Mesa mesa) throws MesaInexistenteException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert mesa != null : &quot;La mesa no puede ser nula&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mesas.contains(mesa))</b>
+<b class="fc">&nbsp;            throw new MesaInexistenteException(mesa);</b>
+&nbsp;
+<b class="fc">&nbsp;        mesas.remove(mesa);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert !mesas.contains(mesa) : &quot;La mesa no se eliminó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Asigna una mesa a un mozo. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mozo != null &lt;br&gt;
+&nbsp;     * mesa != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt;  &lt;br&gt;
+&nbsp;     * Se asigna la mesa al mozo. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param mozo El mozo asignado para la mesa.
+&nbsp;     * @param mesa La mesa a asignar.
+&nbsp;     * @throws MozoInexistenteException Si el mozo no existe.
+&nbsp;     * @throws MesaInexistenteException Si la mesa no existe.
+&nbsp;     */
+&nbsp;    public void asignarMesa(Mozo mozo, Mesa mesa) throws MozoInexistenteException, MesaInexistenteException {
+<b class="fc">&nbsp;        assert mozo != null : &quot;El mozo no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert mesa != null : &quot;La mesa no puede ser nula&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mozos.contains(mozo))</b>
+<b class="fc">&nbsp;            throw new MozoInexistenteException(mozo);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mesas.contains(mesas))</b>
+<b class="fc">&nbsp;            throw new MesaInexistenteException(mesa);</b>
+&nbsp;
+<b class="nc">&nbsp;        asignacionMesas.computeIfAbsent(mozo, k -&gt; new ArrayList&lt;&gt;()).add(mesa);</b>
+&nbsp;
+<b class="nc">&nbsp;        assert asignacionMesas.get(mozo).contains(mesa) : &quot;La mesa no se asignó al mozo&quot;;</b>
+<b class="nc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Crea una comanda para una mesa.
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mesa != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea una comanda para la mesa. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param mesa La mesa para la cual se crea la comanda.
+&nbsp;     * @throws MesaInexistenteException Si la mesa no existe.
+&nbsp;     * @throws MesaOcupadaException     Si la mesa ya tiene una comanda.
+&nbsp;     */
+&nbsp;    public void crearComanda(Mesa mesa) throws MesaInexistenteException, MesaOcupadaException {
+<b class="fc">&nbsp;        assert mesa != null : &quot;La mesa no puede ser nula&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mesas.contains(mesa))</b>
+<b class="fc">&nbsp;            throw new MesaInexistenteException(mesa);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (mesa.estaOcupada()) {</b>
+<b class="fc">&nbsp;            throw new MesaOcupadaException(mesa);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        comandas.put(mesa, new Comanda());</b>
+<b class="fc">&nbsp;        mesa.ocupar();</b>
+&nbsp;
+<b class="fc">&nbsp;        assert comandas.containsKey(mesa) : &quot;La comanda no se creó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Cierra una comanda para una mesa. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mesa != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se cierra la comanda para la mesa. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param mesa La mesa de la comanda a cerrar.
+&nbsp;     * @throws MesaInexistenteException Si la mesa no existe.
+&nbsp;     * @throws MesaNoOcupadaException   Si la mesa no está ocupada.
+&nbsp;     */
+&nbsp;    public void cerrarComanda(Mesa mesa) throws MesaInexistenteException, MesaNoOcupadaException {
+<b class="fc">&nbsp;        assert mesa != null : &quot;La mesa no puede ser nula&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mesas.contains(mesa))</b>
+<b class="fc">&nbsp;            throw new MesaInexistenteException(mesa);</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!mesa.estaOcupada()) {</b>
+<b class="fc">&nbsp;            throw new MesaNoOcupadaException(mesa);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        Comanda comanda = comandas.get(mesa);</b>
+<b class="fc">&nbsp;        Mozo mozo = null;</b>
+<b class="fc">&nbsp;        boolean encontrado = false;</b>
+<b class="fc">&nbsp;        Iterator&lt;Map.Entry&lt;Mozo, List&lt;Mesa&gt;&gt;&gt; it = asignacionMesas.entrySet().iterator();</b>
+<b class="fc">&nbsp;        while (it.hasNext() &amp;&amp; !encontrado) {</b>
+<b class="nc">&nbsp;            Map.Entry&lt;Mozo, List&lt;Mesa&gt;&gt; entry = it.next();</b>
+<b class="nc">&nbsp;            if (entry.getValue().contains(mesa)) {</b>
+<b class="nc">&nbsp;                mozo = entry.getKey();</b>
+<b class="nc">&nbsp;                encontrado = true;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        comandas.remove(mesa);</b>
+<b class="fc">&nbsp;        mesa.desocupar();</b>
+&nbsp;
+&nbsp;        // TODO: Hacer facturación con la comanda.
+&nbsp;
+<b class="fc">&nbsp;        assert !comandas.containsKey(mesa) : &quot;La comanda no se cerró&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega un pedido a una comanda. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * mesa != null &lt;br&gt;
+&nbsp;     * pedido != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega el pedido a la comanda de la mesa. &lt;br&gt;
+&nbsp;     * Se descuenta el stock del producto. &lt;br&gt;
+&nbsp;     * @param mesa   Mesa para agregar el pedido.
+&nbsp;     * @param pedido Pedido a agregar.
+&nbsp;     * @throws ComandaInexistenteException Si la mesa no tiene una comanda.
+&nbsp;     * @throws StockInsuficienteException  Si no hay stock suficiente para el pedido.
+&nbsp;     */
+&nbsp;    public void agregarPedido(Mesa mesa, Pedido pedido) throws ComandaInexistenteException, StockInsuficienteException {
+&nbsp;        // TODO: Implementar
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega un operario al sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * operario != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega el operario al sistema. &lt;br&gt;
+&nbsp;     * @param operario Operario a agregar.
+&nbsp;     * @throws OperarioExistenteException     Si el operario no existe.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el sistema no está en modo administrador.
+&nbsp;     */
+&nbsp;    public void agregarOperario(Operario operario) throws OperarioExistenteException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert operario != null : &quot;El operario no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (operarios.contains(operario)) {</b>
+<b class="fc">&nbsp;            throw new OperarioExistenteException(operario);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        operarios.add(operario);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert operarios.contains(operario) : &quot;El operario no se agregó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Elimina un operario del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * operario != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se elimina el operario del sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param operario El operario a eliminar.
+&nbsp;     * @throws OperarioInexistenteException   si el operario no está en el sistema.
+&nbsp;     * @throws OperacionNoAutorizadaException Si el sistema no está en modo administrador.
+&nbsp;     */
+&nbsp;    public void eliminarOperario(Operario operario) throws OperarioInexistenteException, OperacionNoAutorizadaException {
+<b class="fc">&nbsp;        assert operario != null : &quot;El operario no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (modoOperacion != ModoOperacion.ADMINISTRADOR)</b>
+<b class="fc">&nbsp;            throw new OperacionNoAutorizadaException();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!operarios.contains(operario)) {</b>
+<b class="fc">&nbsp;            throw new OperarioInexistenteException(operario.getNombreUsuario());</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        operarios.remove(operario);</b>
+&nbsp;
+<b class="fc">&nbsp;        assert !operarios.contains(operario) : &quot;El operario no se eliminó&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ModoOperacion getModoOperacion() {
+<b class="fc">&nbsp;        return modoOperacion;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Asigna el modo de operacion del sistema.
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; modoOperacion != null
+&nbsp;     * &lt;b&gt;Post: &lt;/b&gt; Se asigna el modo de operacion del sistema.
+&nbsp;     *
+&nbsp;     * @param modoOperacion El modo de operacion del sistema.
+&nbsp;     */
+&nbsp;    public void setModoOperacion(ModoOperacion modoOperacion) {
+<b class="fc">&nbsp;        assert modoOperacion != null : &quot;El modo de operacion no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.modoOperacion = modoOperacion;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.modoOperacion == modoOperacion : &quot;El modo de operacion no se establecio&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Busca un operario por su nombre de usuario.
+&nbsp;     *
+&nbsp;     * @param nombreUsuario nombre de usuario del operario.
+&nbsp;     * @return el operario con el nombre de usuario indicado.
+&nbsp;     * @throws OperarioInexistenteException si no existe un operario con el nombre de usuario indicado.
+&nbsp;     */
+&nbsp;    public Operario buscarOperario(String nombreUsuario) throws OperarioInexistenteException {
+<b class="fc">&nbsp;        for (Operario operario : operarios) {</b>
+<b class="fc">&nbsp;            if (operario.getNombreUsuario().equals(nombreUsuario)) {</b>
+<b class="fc">&nbsp;                return operario;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        if (administrador.getNombreUsuario().equals(nombreUsuario)) {</b>
+<b class="nc">&nbsp;            return administrador;</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            throw new OperarioInexistenteException(nombreUsuario);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega una promoción por producto al sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * producto != null &lt;br&gt;
+&nbsp;     * promocion != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega la promoción al sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param producto  Producto para promocionar.
+&nbsp;     * @param promocion Promocion a aplicar.
+&nbsp;     * @throws ProductoInexistenteException Si el producto no existe.
+&nbsp;     */
+&nbsp;    public void agregarPromocionProducto(Producto producto, PromocionProducto promocion) throws ProductoInexistenteException {
+&nbsp;        // TODO: Implementar
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Agrega una promoción temporal al sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * promocion != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se agrega la promoción al sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param promocion Promocion a aplicar.
+&nbsp;     */
+&nbsp;    public void agregarPromocionTemporal(PromocionTemporal promocion) {
+&nbsp;        // TODO: Implementar
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Elimina una promoción por producto del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * producto != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se elimina la promoción del sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param producto Producto para eliminar promocion.
+&nbsp;     * @throws ProductoInexistenteException Si el producto no existe.
+&nbsp;     */
+&nbsp;    public void eliminarPromocionProducto(Producto producto) throws ProductoInexistenteException {
+&nbsp;        // TODO: Implementar
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Elimina una promoción temporal del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * promocion != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se elimina la promoción del sistema. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param promocion Promocion a eliminar.
+&nbsp;     * @throws PromocionInexistenteException Si la promoción no existe.
+&nbsp;     */
+&nbsp;    public void eliminarPromocionTemporal(PromocionTemporal promocion) throws PromocionInexistenteException {
+&nbsp;        // TODO: Implementar
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    // TODO Estadisticas mensuales empleado.
+&nbsp;
+&nbsp;    private void verificarInvariantes() {
+<b class="fc">&nbsp;        assert nombreLocal != null : &quot;El nombre del local no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert !nombreLocal.equals(&quot;&quot;) : &quot;El nombre del local no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert mozos != null : &quot;La lista de mozos no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert mesas != null : &quot;La lista de mesas no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert productos != null : &quot;La lista de productos no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert operarios != null : &quot;La lista de operarios no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert asignacionMesas != null : &quot;La asignación de mesas no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert comandas != null : &quot;La lista de comandas no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert promocionesProducto != null : &quot;La lista de promociones no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert mozos.size() &lt;= 6 : &quot;No puede haber más de 6 mozos&quot;;</b>
+<b class="fc">&nbsp;        assert promocionesProducto.values().stream().allMatch(promocionesProducto -&gt; promocionesProducto != null</b>
+<b class="nc">&nbsp;                &amp;&amp; promocionesProducto.stream().allMatch(promocion -&gt; promocion.getDiasPromo() != null)) : &quot;Debe haber días de promoción para todos los productos&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        Dia diaActual = Dia.getDiaActual();</b>
+<b class="fc">&nbsp;        Set&lt;Map.Entry&lt;Producto, List&lt;PromocionProducto&gt;&gt;&gt; entries = promocionesProducto.entrySet();</b>
+<b class="fc">&nbsp;        Iterator&lt;Map.Entry&lt;Producto, List&lt;PromocionProducto&gt;&gt;&gt; iterator = entries.iterator();</b>
+<b class="fc">&nbsp;        int productosPromocionadosHoy = 0;</b>
+<b class="fc">&nbsp;        while (iterator.hasNext() &amp;&amp; productosPromocionadosHoy &lt; 2) {</b>
+<b class="nc">&nbsp;            Map.Entry&lt;Producto, List&lt;PromocionProducto&gt;&gt; entry = iterator.next();</b>
+<b class="nc">&nbsp;            List&lt;PromocionProducto&gt; promociones = entry.getValue();</b>
+<b class="nc">&nbsp;            Iterator&lt;PromocionProducto&gt; iteratorPromociones = promociones.iterator();</b>
+<b class="nc">&nbsp;            boolean productoPromocionadoHoy = false;</b>
+<b class="nc">&nbsp;            while (iteratorPromociones.hasNext() &amp;&amp; productosPromocionadosHoy &lt; 2 &amp;&amp; !productoPromocionadoHoy) {</b>
+<b class="nc">&nbsp;                Promocion promocion = iteratorPromociones.next();</b>
+<b class="nc">&nbsp;                if (promocion.getDiasPromo().contains(diaActual)) {</b>
+<b class="nc">&nbsp;                    productosPromocionadosHoy++;</b>
+<b class="nc">&nbsp;                    productoPromocionadoHoy = true;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;//        assert productosPromocionadosHoy &gt;= 2 : &quot;Debe haber al menos 2 productos promocionados hoy&quot;;
+&nbsp;    }
+&nbsp;
+&nbsp;    // AGREGADOS PARA TESTEAR
+&nbsp;
+&nbsp;    public String getNombreLocal() {
+<b class="fc">&nbsp;        return nombreLocal;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Mozo&gt; getMozos() {
+<b class="fc">&nbsp;        return mozos;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Mesa&gt; getMesas() {
+<b class="fc">&nbsp;        return mesas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Operario&gt; getOperarios() {
+<b class="fc">&nbsp;        return operarios;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Mozo, List&lt;Mesa&gt;&gt; getAsignacionMesas() {
+<b class="fc">&nbsp;        return asignacionMesas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Producto, List&lt;PromocionProducto&gt;&gt; getPromocionesProducto() {
+<b class="fc">&nbsp;        return promocionesProducto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;PromocionTemporal&gt; getPromocionesTemporales() {
+<b class="fc">&nbsp;        return promocionesTemporales;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Administrador getAdministrador() {
+<b class="nc">&nbsp;        return administrador;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;Mesa, Comanda&gt; getComandas() {
+<b class="fc">&nbsp;        return comandas;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Producto&gt; getProductos() {
+<b class="fc">&nbsp;        return productos;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

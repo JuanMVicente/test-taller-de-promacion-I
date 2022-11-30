@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Mozo</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Mozo (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Mozo</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (40/40)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;import modelos.enums.Estado;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;/**
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt; &lt;br&gt;
+&nbsp; * nombre != null &lt;br&gt;
+&nbsp; * apellido != null &lt;br&gt;
+&nbsp; * fechaNacimiento != null &lt;br&gt;
+&nbsp; * hijosACargo &gt;= 0 &lt;br&gt;
+&nbsp; * estado != null &lt;br&gt;
+&nbsp; * la edad del mozo es mayor o igual a 18 años. &lt;br&gt;
+&nbsp; * sueldo != null &lt;br&gt;
+&nbsp; */
+<b class="fc">&nbsp;public class Mozo {</b>
+&nbsp;    private String nombre;
+&nbsp;    private String apellido;
+&nbsp;    private Date fechaNacimiento;
+&nbsp;    private int hijosACargo;
+&nbsp;    private Estado estado;
+&nbsp;    private Sueldo sueldo;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Crea un mozo con los datos indicados. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * nombre != null &lt;br&gt;
+&nbsp;     * apellido != null &lt;br&gt;
+&nbsp;     * fechaNacimiento != null &lt;br&gt;
+&nbsp;     * hijosACargo &gt;= 0 &lt;br&gt;
+&nbsp;     * la edad del mozo es mayor o igual a 18 años. &lt;br&gt;
+&nbsp;     * sueldo != null &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea el mozo con los datos indicados y con estado ACTIVO. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param nombre          Nombre del mozo.
+&nbsp;     * @param apellido        Apellido del mozo.
+&nbsp;     * @param fechaNacimiento Fecha de nacimiento del mozo.
+&nbsp;     * @param hijosACargo     Cantidad de hijos a cargo del mozo.
+&nbsp;     * @param sueldo          Sueldo del mozo.
+&nbsp;     */
+<b class="fc">&nbsp;    public Mozo(String nombre, String apellido, Date fechaNacimiento, int hijosACargo, Sueldo sueldo) {</b>
+<b class="fc">&nbsp;        assert nombre != null : &quot;El nombre no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert apellido != null : &quot;El apellido no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert fechaNacimiento != null : &quot;La fecha de nacimiento no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert hijosACargo &gt;= 0 : &quot;La cantidad de hijos a cargo no puede ser negativa&quot;;</b>
+<b class="fc">&nbsp;        assert mayorDeEdad(fechaNacimiento) : &quot;El mozo es menor de edad&quot;;</b>
+<b class="fc">&nbsp;        assert sueldo != null : &quot;El sueldo no puede ser nulo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.nombre = nombre;</b>
+<b class="fc">&nbsp;        this.apellido = apellido;</b>
+<b class="fc">&nbsp;        this.fechaNacimiento = fechaNacimiento;</b>
+<b class="fc">&nbsp;        this.hijosACargo = hijosACargo;</b>
+<b class="fc">&nbsp;        this.estado = Estado.ACTIVO;</b>
+<b class="fc">&nbsp;        this.sueldo = sueldo;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.nombre == nombre : &quot;El nombre no se ha asignado correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.apellido == apellido : &quot;El apellido no se ha asignado correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.fechaNacimiento == fechaNacimiento : &quot;La fecha de nacimiento no se ha asignado correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.hijosACargo == hijosACargo : &quot;La cantidad de hijos a cargo no se ha asignado correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.estado == Estado.ACTIVO : &quot;El estado no se ha asignado correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.sueldo == sueldo : &quot;El sueldo no se ha asignado correctamente&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Determina si la persona es mayor de edad. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * fechaNacimiento != null &lt;br&gt;
+&nbsp;     * @param fechaNacimiento La fecha de nacimiento de la persona.
+&nbsp;     * @return Si es mozo es mayor de edad.
+&nbsp;     */
+&nbsp;    private static boolean mayorDeEdad(Date fechaNacimiento) {
+<b class="fc">&nbsp;        assert fechaNacimiento != null : &quot;La fecha de nacimiento no puede ser null.&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        Date fechaActual = new Date();</b>
+<b class="fc">&nbsp;        long ms = fechaActual.getTime() - fechaNacimiento.getTime();</b>
+<b class="fc">&nbsp;        long edad = ms / (1000l * 60 * 60 * 24 * 365);</b>
+<b class="fc">&nbsp;        return edad &gt;= 18;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNombre() {
+<b class="fc">&nbsp;        return nombre;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getApellido() {
+<b class="fc">&nbsp;        return apellido;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getFechaNacimiento() {
+<b class="fc">&nbsp;        return fechaNacimiento;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getHijosACargo() {
+<b class="fc">&nbsp;        return hijosACargo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Estado getEstado() {
+<b class="fc">&nbsp;        return estado;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEstado(Estado estado) {
+<b class="fc">&nbsp;        this.estado = estado;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getSueldo() {
+<b class="fc">&nbsp;        return sueldo.calcularSueldo(hijosACargo);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void verificarInvariantes() {
+<b class="fc">&nbsp;        assert nombre != null : &quot;nombre no puede ser null.&quot;;</b>
+<b class="fc">&nbsp;        assert apellido != null : &quot;apellido no puede ser null.&quot;;</b>
+<b class="fc">&nbsp;        assert fechaNacimiento != null : &quot;fechaNacimiento no puede ser null&quot;;</b>
+<b class="fc">&nbsp;        assert hijosACargo &gt;= 0 : &quot;hijosACargo no puede ser menor a 0&quot;;</b>
+<b class="fc">&nbsp;        assert estado != null : &quot;estado no puede ser null&quot;;</b>
+<b class="fc">&nbsp;        assert mayorDeEdad(fechaNacimiento) : &quot;El mozo no puede ser menor de edad&quot;;</b>
+<b class="fc">&nbsp;        assert sueldo != null : &quot;sueldo no puede ser null&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

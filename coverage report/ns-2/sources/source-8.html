@@ -1,0 +1,269 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Producto</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Producto (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Producto</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91,7%
+  </span>
+  <span class="absValue">
+    (11/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98,1%
+  </span>
+  <span class="absValue">
+    (51/52)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;/**
+&nbsp; * Clase que representa a un producto del sistema. &lt;br&gt;
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt; &lt;br&gt;
+&nbsp; * nombre != null &lt;br&gt;
+&nbsp; * nombre != &quot;&quot; &lt;br&gt;
+&nbsp; * precioCosto &gt;= 0 &lt;br&gt;
+&nbsp; * precioVenta &gt;= 0 &lt;br&gt;
+&nbsp; * precioVenta &gt; precioCosto &lt;br&gt;
+&nbsp; * stock &gt;= 0 &lt;br&gt;
+&nbsp; */
+<b class="fc">&nbsp;public class Producto {</b>
+&nbsp;    private int id;
+&nbsp;    private String nombre;
+&nbsp;    private double precioCosto;
+&nbsp;    private double precioVenta;
+&nbsp;    private int stock;
+&nbsp;
+<b class="fc">&nbsp;    private static int ultimoId = 0;</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor de la clase Producto. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * nombre != null &lt;br&gt;
+&nbsp;     * nombre != &quot;&quot; &lt;br&gt;
+&nbsp;     * precioCosto &gt;= 0 &lt;br&gt;
+&nbsp;     * precioVenta &gt;= 0 &lt;br&gt;
+&nbsp;     * precioVenta &gt; precioCosto &lt;br&gt;
+&nbsp;     * stock &gt;= 0 &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea un nuevo producto con los datos ingresados y un id unico autogenerado. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param nombre      Nombre del producto.
+&nbsp;     * @param precioCosto Precio de costo del producto.
+&nbsp;     * @param precioVenta Precio de venta del producto.
+&nbsp;     * @param stock       Stock del producto.
+&nbsp;     */
+<b class="fc">&nbsp;    public Producto(String nombre, double precioCosto, double precioVenta, int stock) {</b>
+<b class="fc">&nbsp;        assert nombre != null : &quot;El nombre del producto no puede ser nulo.&quot;;</b>
+<b class="fc">&nbsp;        assert nombre != &quot;&quot; : &quot;El nombre del producto no puede ser vacio.&quot;;</b>
+<b class="fc">&nbsp;        assert precioCosto &gt;= 0 : &quot;El precio de costo del producto no puede ser negativo.&quot;;</b>
+<b class="fc">&nbsp;        assert precioVenta &gt;= 0 : &quot;El precio de venta del producto no puede ser negativo.&quot;;</b>
+<b class="fc">&nbsp;        assert precioVenta &gt; precioCosto : &quot;El precio de venta del producto no puede ser menor o igual al precio de costo.&quot;;</b>
+<b class="fc">&nbsp;        assert stock &gt;= 0 : &quot;El stock del producto no puede ser negativo.&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.id = ultimoId;</b>
+<b class="fc">&nbsp;        ultimoId++;</b>
+<b class="fc">&nbsp;        this.nombre = nombre;</b>
+<b class="fc">&nbsp;        this.precioCosto = precioCosto;</b>
+<b class="fc">&nbsp;        this.precioVenta = precioVenta;</b>
+<b class="fc">&nbsp;        this.stock = stock;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.id == ultimoId - 1 : &quot;El id del producto no es el esperado.&quot;;</b>
+<b class="fc">&nbsp;        assert this.nombre.equals(nombre) : &quot;El nombre del producto no es el esperado.&quot;;</b>
+<b class="fc">&nbsp;        assert this.precioCosto == precioCosto : &quot;El precio de costo del producto no es el esperado.&quot;;</b>
+<b class="fc">&nbsp;        assert this.precioVenta == precioVenta : &quot;El precio de venta del producto no es el esperado.&quot;;</b>
+<b class="fc">&nbsp;        assert this.stock == stock : &quot;El stock del producto no es el esperado.&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Incrementa el stock en una cantidad dada. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * cantidad &gt; 0 &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se incrementa el stock en la cantidad dada. &lt;br&gt;
+&nbsp;     * @param cantidad Cantidad a incrementar.
+&nbsp;     */
+&nbsp;    public void incrementarStock(int cantidad) {
+<b class="fc">&nbsp;        assert cantidad &gt; 0 : &quot;La cantidad a incrementar debe ser mayor a 0&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        int stockInicial = this.stock;</b>
+<b class="fc">&nbsp;        this.stock += cantidad;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.stock == stockInicial + cantidad : &quot;El stock no se incremento correctamente&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Decrementa el stock en una cantidad dada. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * cantidad &gt; 0 &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se decrementa el stock en la cantidad dada. &lt;br&gt;
+&nbsp;     * @param cantidad Cantidad a decrementar.
+&nbsp;     */
+&nbsp;    public void decrementarStock(int cantidad) {
+<b class="fc">&nbsp;        assert cantidad &gt; 0 : &quot;La cantidad a decrementar debe ser mayor a 0&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        int stockInicial = this.stock;</b>
+<b class="fc">&nbsp;        this.stock -= cantidad;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.stock == stockInicial - cantidad : &quot;El stock no se decremento correctamente&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Cambia el precio de venta del producto. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * precioVenta &gt; 0 &lt;br&gt;
+&nbsp;     * precioVenta &gt; precioCosto &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se cambia el precio de venta del producto. &lt;br&gt;
+&nbsp;     * @param precioVenta Nuevo precio de venta.
+&nbsp;     */
+&nbsp;    public void cambiarPrecioVenta(double precioVenta) {
+<b class="fc">&nbsp;        assert precioVenta &gt; 0 : &quot;El precio de venta debe ser mayor a 0&quot;;</b>
+<b class="fc">&nbsp;        assert precioVenta &gt; this.precioCosto : &quot;El precio de venta debe ser mayor al precio de costo&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.precioVenta = precioVenta;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.precioVenta == precioVenta : &quot;El precio de venta no se cambio correctamente&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getPrecioVenta() {
+<b class="fc">&nbsp;        return this.precioVenta;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Cambia el precio de costo del producto. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * precioCosto &gt; 0 &lt;br&gt;
+&nbsp;     * precioVenta &gt; precioCosto &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se cambia el precio de costo del producto. &lt;br&gt;
+&nbsp;     * @param precioCosto Nuevo precio de costo.
+&nbsp;     */
+&nbsp;    public void cambiarPrecioCosto(double precioCosto) {
+<b class="fc">&nbsp;        assert precioCosto &gt; 0 : &quot;El precio de costo debe ser mayor a 0&quot;;</b>
+<b class="fc">&nbsp;        assert precioCosto &lt; this.precioVenta : &quot;El precio de costo debe ser menor al precio de venta&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.precioCosto = precioCosto;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.precioCosto == precioCosto : &quot;El precio de costo no se cambio correctamente&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double getPrecioCosto() {
+<b class="fc">&nbsp;        return this.precioCosto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getId() {
+<b class="nc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNombre() {
+<b class="fc">&nbsp;        return nombre;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void verificarInvariantes() {
+<b class="fc">&nbsp;        assert this.nombre != null : &quot;El nombre del producto no puede ser nulo.&quot;;</b>
+<b class="fc">&nbsp;        assert this.nombre != &quot;&quot; : &quot;El nombre del producto no puede ser vacio.&quot;;</b>
+<b class="fc">&nbsp;        assert this.precioCosto &gt;= 0 : &quot;El precio de costo del producto no puede ser negativo.&quot;;</b>
+<b class="fc">&nbsp;        assert this.precioVenta &gt;= 0 : &quot;El precio de venta del producto no puede ser negativo.&quot;;</b>
+<b class="fc">&nbsp;        assert this.precioVenta &gt; this.precioCosto : &quot;El precio de venta del producto no puede ser menor o igual al precio de costo.&quot;;</b>
+<b class="fc">&nbsp;        assert this.stock &gt;= 0 : &quot;El stock del producto no puede ser negativo.&quot;;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //METODOS AGREGADOS PARA TESTEAR
+&nbsp;
+&nbsp;    public int getStock() {
+<b class="fc">&nbsp;        return stock;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

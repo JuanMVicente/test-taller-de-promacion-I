@@ -1,0 +1,291 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Login</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">vistas</a>
+</div>
+
+<h1>Coverage Summary for Class: Login (vistas)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Login</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/79)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Login$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/84)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package vistas;
+&nbsp;
+&nbsp;import javax.swing.*;
+&nbsp;import javax.swing.GroupLayout.Alignment;
+&nbsp;import javax.swing.border.EmptyBorder;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.ActionListener;
+&nbsp;import java.awt.event.WindowListener;
+&nbsp;
+&nbsp;public class Login extends JFrame implements IVista {
+&nbsp;
+&nbsp;    private JPanel contentPane;
+&nbsp;    private JPanel principal;
+&nbsp;    private JPanel titulo;
+&nbsp;    private JTextField tituloText;
+&nbsp;    private JTextField textField;
+&nbsp;    private JPasswordField passwordField;
+&nbsp;    private JRadioButton mostrarContraseniaBoton;
+&nbsp;    private JButton iniciarSesionButton;
+&nbsp;
+&nbsp;
+&nbsp;    private char defaultChar;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Launch the application.
+&nbsp;     */
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        EventQueue.invokeLater(new Runnable() {</b>
+&nbsp;            public void run() {
+&nbsp;                try {
+<b class="nc">&nbsp;                    Login frame = new Login();</b>
+<b class="nc">&nbsp;                } catch (Exception e) {</b>
+<b class="nc">&nbsp;                    e.printStackTrace();</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Create the frame.
+&nbsp;     */
+<b class="nc">&nbsp;    public Login() {</b>
+<b class="nc">&nbsp;        setResizable(false);</b>
+<b class="nc">&nbsp;        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</b>
+<b class="nc">&nbsp;        setBounds(100, 100, 1000, 1000);</b>
+<b class="nc">&nbsp;        setSize(600, 400);</b>
+<b class="nc">&nbsp;        contentPane = new JPanel();</b>
+<b class="nc">&nbsp;        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));</b>
+<b class="nc">&nbsp;        contentPane.setLayout(new BorderLayout(0, 0));</b>
+<b class="nc">&nbsp;        setContentPane(contentPane);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel titulo = new JPanel();</b>
+<b class="nc">&nbsp;        contentPane.add(titulo, BorderLayout.NORTH);</b>
+<b class="nc">&nbsp;        titulo.setLayout(new BorderLayout(0, 0));</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel tituloTextPan = new JPanel();</b>
+<b class="nc">&nbsp;        titulo.add(tituloTextPan, BorderLayout.CENTER);</b>
+&nbsp;
+<b class="nc">&nbsp;        tituloText = new JTextField();</b>
+<b class="nc">&nbsp;        tituloText.setBorder(null);</b>
+<b class="nc">&nbsp;        tituloText.setHorizontalAlignment(SwingConstants.CENTER);</b>
+<b class="nc">&nbsp;        tituloText.setFont(new Font(&quot;Dialog&quot;, Font.BOLD, 32));</b>
+<b class="nc">&nbsp;        tituloText.setText(&quot;Iniciar Sesión&quot;);</b>
+<b class="nc">&nbsp;        tituloText.setEditable(false);</b>
+<b class="nc">&nbsp;        tituloTextPan.add(tituloText);</b>
+<b class="nc">&nbsp;        tituloText.setColumns(10);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel principal = new JPanel();</b>
+<b class="nc">&nbsp;        contentPane.add(principal, BorderLayout.CENTER);</b>
+<b class="nc">&nbsp;        principal.setLayout(new GridLayout(2, 1, 0, 0));</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel usuario = new JPanel();</b>
+<b class="nc">&nbsp;        principal.add(usuario);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel usuarioLabelPan = new JPanel();</b>
+&nbsp;
+<b class="nc">&nbsp;        JLabel usuarioLabel = new JLabel(&quot;Nombre de Usuario&quot;);</b>
+<b class="nc">&nbsp;        usuarioLabel.setFont(new Font(&quot;Dialog&quot;, Font.PLAIN, 16));</b>
+<b class="nc">&nbsp;        usuarioLabelPan.add(usuarioLabel);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel usuarioTextPan = new JPanel();</b>
+&nbsp;
+<b class="nc">&nbsp;        textField = new JTextField();</b>
+<b class="nc">&nbsp;        textField.setColumns(10);</b>
+<b class="nc">&nbsp;        usuarioTextPan.add(textField);</b>
+<b class="nc">&nbsp;        GroupLayout gl_usuario = new GroupLayout(usuario);</b>
+<b class="nc">&nbsp;        gl_usuario.setHorizontalGroup(</b>
+<b class="nc">&nbsp;                gl_usuario.createParallelGroup(Alignment.LEADING)</b>
+<b class="nc">&nbsp;                        .addComponent(usuarioLabelPan, GroupLayout.PREFERRED_SIZE, 590, GroupLayout.PREFERRED_SIZE)</b>
+<b class="nc">&nbsp;                        .addComponent(usuarioTextPan, GroupLayout.PREFERRED_SIZE, 590, GroupLayout.PREFERRED_SIZE)</b>
+&nbsp;        );
+<b class="nc">&nbsp;        gl_usuario.setVerticalGroup(</b>
+<b class="nc">&nbsp;                gl_usuario.createParallelGroup(Alignment.LEADING)</b>
+<b class="nc">&nbsp;                        .addGroup(gl_usuario.createSequentialGroup()</b>
+<b class="nc">&nbsp;                                .addComponent(usuarioLabelPan, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)</b>
+<b class="nc">&nbsp;                                .addComponent(usuarioTextPan, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))</b>
+&nbsp;        );
+<b class="nc">&nbsp;        usuario.setLayout(gl_usuario);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel contrasenia = new JPanel();</b>
+<b class="nc">&nbsp;        principal.add(contrasenia);</b>
+<b class="nc">&nbsp;        contrasenia.setLayout(new GridLayout(2, 1, 0, 0));</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel contraseniaLabelPan = new JPanel();</b>
+<b class="nc">&nbsp;        contrasenia.add(contraseniaLabelPan);</b>
+&nbsp;
+<b class="nc">&nbsp;        JLabel contraseniaLabel = new JLabel(&quot;Contraseña&quot;);</b>
+<b class="nc">&nbsp;        contraseniaLabel.setFont(new Font(&quot;Dialog&quot;, Font.PLAIN, 16));</b>
+<b class="nc">&nbsp;        contraseniaLabelPan.add(contraseniaLabel);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel contraseniaTextPan = new JPanel();</b>
+<b class="nc">&nbsp;        contrasenia.add(contraseniaTextPan);</b>
+&nbsp;
+<b class="nc">&nbsp;        passwordField = new JPasswordField();</b>
+<b class="nc">&nbsp;        this.defaultChar = this.passwordField.getEchoChar();</b>
+<b class="nc">&nbsp;        passwordField.setColumns(10);</b>
+<b class="nc">&nbsp;        contraseniaTextPan.add(passwordField);</b>
+&nbsp;
+<b class="nc">&nbsp;        mostrarContraseniaBoton = new JRadioButton(&quot;&quot;);</b>
+<b class="nc">&nbsp;        mostrarContraseniaBoton.setActionCommand(&quot;mostrarContrasenia&quot;);</b>
+<b class="nc">&nbsp;        contraseniaTextPan.add(mostrarContraseniaBoton);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel botones = new JPanel();</b>
+<b class="nc">&nbsp;        contentPane.add(botones, BorderLayout.SOUTH);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton iniciarSesionButton = new JButton(&quot;Iniciar Sesion&quot;);</b>
+<b class="nc">&nbsp;        iniciarSesionButton.setActionCommand(&quot;iniciarSesion&quot;);</b>
+<b class="nc">&nbsp;        botones.add(iniciarSesionButton);</b>
+&nbsp;
+<b class="nc">&nbsp;        setVisible(true);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void intercambiarContrasenia() {
+<b class="nc">&nbsp;        boolean estado = mostrarContraseniaBoton.isSelected();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (estado) {</b>
+<b class="nc">&nbsp;            this.passwordField.setEchoChar((char) 0);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            this.passwordField.setEchoChar(this.defaultChar);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void setActionListener(ActionListener actionListener) {
+<b class="nc">&nbsp;        iniciarSesionButton.addActionListener(actionListener);</b>
+<b class="nc">&nbsp;        mostrarContraseniaBoton.addActionListener(actionListener);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void setWindowListener(WindowListener windowListener) {
+<b class="nc">&nbsp;        addWindowListener(windowListener);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getUsuario() {
+<b class="nc">&nbsp;        return textField.getText();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getContrasenia() {
+<b class="nc">&nbsp;        return new String(passwordField.getPassword());</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

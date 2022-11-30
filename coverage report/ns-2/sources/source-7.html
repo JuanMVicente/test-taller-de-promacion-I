@@ -1,0 +1,151 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Pedido</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Pedido (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Pedido</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;/**
+&nbsp; * Clase que representa un pedido dentro de una comanda. &lt;br&gt;
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt; &lt;br&gt;
+&nbsp; * producto != null &lt;br&gt;
+&nbsp; * cantidad &gt; 0 &lt;br&gt;
+&nbsp; * fecha != null &lt;br&gt;
+&nbsp; */
+<b class="fc">&nbsp;public class Pedido {</b>
+&nbsp;    private Producto producto;
+&nbsp;    private int cantidad;
+&nbsp;    private Date fecha;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Crea un pedido con un producto y su cantidad. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * producto != null &lt;br&gt;
+&nbsp;     * cantidad &gt; 0 &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea un nuevo pedido con el producto y la cantidad ingresados. &lt;br&gt;
+&nbsp;     * La fecha del pedido es la actual. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param producto Producto del pedido.
+&nbsp;     * @param cantidad Cantidad de unidades del producto pedidas.
+&nbsp;     */
+<b class="fc">&nbsp;    public Pedido(Producto producto, int cantidad) {</b>
+<b class="fc">&nbsp;        assert producto != null : &quot;El producto no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert cantidad &gt; 0 : &quot;La cantidad debe ser mayor a 0&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.producto = producto;</b>
+<b class="fc">&nbsp;        this.cantidad = cantidad;</b>
+<b class="fc">&nbsp;        fecha = new Date();</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.producto == producto : &quot;El producto no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.cantidad == cantidad : &quot;La cantidad no se asignó correctamente&quot;;</b>
+&nbsp;        // TODO validar la fecha.
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void verificarInvariantes() {
+<b class="fc">&nbsp;        assert producto != null : &quot;El producto no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert cantidad &gt; 0 : &quot;La cantidad debe ser mayor a 0&quot;;</b>
+<b class="fc">&nbsp;        assert fecha != null : &quot;La fecha no puede ser nula&quot;;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>

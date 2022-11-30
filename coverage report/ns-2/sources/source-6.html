@@ -1,0 +1,276 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Operario</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">modelos</a>
+</div>
+
+<h1>Coverage Summary for Class: Operario (modelos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Operario</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (57/57)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package modelos;
+&nbsp;
+&nbsp;import excepciones.ContraseniaIncorrectaException;
+&nbsp;import excepciones.UsuarioInactivoException;
+&nbsp;import modelos.enums.ModoOperacion;
+&nbsp;
+&nbsp;/**
+&nbsp; * Clase que representa a un operario del sistema. &lt;br&gt;
+&nbsp; * &lt;b&gt;Inv:&lt;/b&gt; &lt;br&gt;
+&nbsp; * nombre != null &lt;br&gt;
+&nbsp; * nombre != &quot;&quot; &lt;br&gt;
+&nbsp; * apellido != null &lt;br&gt;
+&nbsp; * apellido != &quot;&quot; &lt;br&gt;
+&nbsp; * nombreUsuario != null &lt;br&gt;
+&nbsp; * nombreUsuario != &quot;&quot; &lt;br&gt;
+&nbsp; * nombreUsuario.length() &lt;= 10 &lt;br&gt;
+&nbsp; * contrasenia != null &lt;br&gt;
+&nbsp; * contrasenia.length() &gt;= 6 &lt;br&gt;
+&nbsp; * contrasenia.length() &lt;= 12 &lt;br&gt;
+&nbsp; * contrasenia contiene al menos un numero &lt;br&gt;
+&nbsp; * contrasenia contiene al menos una letra mayuscula &lt;br&gt;
+&nbsp; */
+<b class="fc">&nbsp;public class Operario {</b>
+&nbsp;    private String nombre;
+&nbsp;    private String apellido;
+&nbsp;    private String nombreUsuario;
+&nbsp;    private String contrasenia;
+&nbsp;    private boolean activo;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor de la clase Operario.
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * nombre != null &lt;br&gt;
+&nbsp;     * nombre != &quot;&quot; &lt;br&gt;
+&nbsp;     * apellido != null &lt;br&gt;
+&nbsp;     * apellido != &quot;&quot; &lt;br&gt;
+&nbsp;     * nombreUsuario != null &lt;br&gt;
+&nbsp;     * nombreUsuario != &quot;&quot; &lt;br&gt;
+&nbsp;     * nombreUsuario.length() &lt;= 10 &lt;br&gt;
+&nbsp;     * contrasenia != null &lt;br&gt;
+&nbsp;     * contrasenia.length() &gt;= 6 &lt;br&gt;
+&nbsp;     * contrasenia.length() &lt;= 12 &lt;br&gt;
+&nbsp;     * contrasenia contiene al menos un numero &lt;br&gt;
+&nbsp;     * contrasenia contiene al menos una letra mayuscula &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se crea un nuevo operario con los datos ingresados y con el estado activo. &lt;br&gt;
+&nbsp;     * @param nombre        Nombre del operario.
+&nbsp;     * @param apellido      Apellido del operario.
+&nbsp;     * @param nombreUsuario Nombre de usuario del operario.
+&nbsp;     * @param contrasenia   Contraseña del operario. &lt;br&gt;
+&nbsp;     */
+<b class="fc">&nbsp;    public Operario(String nombre, String apellido, String nombreUsuario, String contrasenia) {</b>
+<b class="fc">&nbsp;        assert nombre != null : &quot;El nombre del operario no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert nombre != &quot;&quot; : &quot;El nombre del operario no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert apellido != null : &quot;El apellido del operario no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert apellido != &quot;&quot; : &quot;El apellido del operario no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert nombreUsuario != null : &quot;El nombre de usuario del operario no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert nombreUsuario != &quot;&quot; : &quot;El nombre de usuario del operario no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert nombreUsuario.length() &lt;= 10 : &quot;El nombre de usuario del operario no puede tener más de 10 caracteres&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia != null : &quot;La contraseña del operario no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.length() &gt;= 6 : &quot;La contraseña del operario no puede tener menos de 6 caracteres&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.length() &lt;= 12 : &quot;La contraseña del operario no puede tener más de 12 caracteres&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.matches(&quot;.*[0-9].*&quot;) : &quot;La contraseña del operario debe contener al menos un número&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.matches(&quot;.*[A-Z].*&quot;) : &quot;La contraseña del operario debe contener al menos una letra mayúscula&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.nombre = nombre;</b>
+<b class="fc">&nbsp;        this.apellido = apellido;</b>
+<b class="fc">&nbsp;        this.nombreUsuario = nombreUsuario;</b>
+<b class="fc">&nbsp;        this.contrasenia = contrasenia;</b>
+<b class="fc">&nbsp;        this.activo = true;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert this.nombre == nombre : &quot;El nombre no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.apellido == apellido : &quot;El apellido no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.nombreUsuario == nombreUsuario : &quot;El nombre de usuario no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.contrasenia == contrasenia : &quot;La contraseña no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        assert this.activo == true : &quot;El estado del operario no se asignó correctamente&quot;;</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Inicia sesion a un operario dentro del sistema. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se establece el sistema en modo operario. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param contrasenia La contraseña del operario.
+&nbsp;     * @throws UsuarioInactivoException       Si el usuario se encuentra inactivo.
+&nbsp;     * @throws ContraseniaIncorrectaException Si la contraseña ingresada es incorrecta.
+&nbsp;     */
+&nbsp;    public void iniciarSesion(String contrasenia) throws UsuarioInactivoException, ContraseniaIncorrectaException {
+<b class="fc">&nbsp;        if(!activo) {</b>
+<b class="fc">&nbsp;            throw new UsuarioInactivoException(this);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if(!this.contrasenia.equals(contrasenia)) {</b>
+<b class="fc">&nbsp;            throw new ContraseniaIncorrectaException();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        Sistema.getInstancia().setModoOperacion(ModoOperacion.OPERARIO);</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Metodo que permite cambiar la contraseña del operario. &lt;br&gt;
+&nbsp;     * &lt;b&gt;Pre:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * contraseniaNueva != null &lt;br&gt;
+&nbsp;     * contraseniaNueva.length() &gt;= 6 &lt;br&gt;
+&nbsp;     * contraseniaNueva.length() &lt;= 12 &lt;br&gt;
+&nbsp;     * contraseniaNueva contiene al menos un numero &lt;br&gt;
+&nbsp;     * contraseniaNueva contiene al menos una letra mayuscula &lt;br&gt;
+&nbsp;     * &lt;b&gt;Post:&lt;/b&gt; &lt;br&gt;
+&nbsp;     * Se cambia la contraseña del operario. &lt;br&gt;
+&nbsp;     * @param contraseniaNueva Contraseña nueva del operario.
+&nbsp;     */
+&nbsp;    public void cambiarContrasenia(String contraseniaNueva) {
+<b class="fc">&nbsp;        assert contraseniaNueva != null;</b>
+<b class="fc">&nbsp;        assert contraseniaNueva.length() &gt;= 6;</b>
+<b class="fc">&nbsp;        assert contraseniaNueva.length() &lt;= 12;</b>
+<b class="fc">&nbsp;        assert contraseniaNueva.matches(&quot;.*[0-9].*&quot;);</b>
+<b class="fc">&nbsp;        assert contraseniaNueva.matches(&quot;.*[A-Z].*&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        contrasenia = contraseniaNueva;</b>
+&nbsp;
+<b class="fc">&nbsp;        assert contrasenia.equals(contraseniaNueva);</b>
+<b class="fc">&nbsp;        verificarInvariantes();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Metodo que permite verificar si la contrasena es valida. &lt;br&gt;
+&nbsp;     *
+&nbsp;     * @param contrasenia Contraseña a verificar.
+&nbsp;     * @return true si la contraseña es valida, false en caso contrario.
+&nbsp;     */
+&nbsp;    public static boolean verificarContrasenia(String contrasenia) {
+<b class="fc">&nbsp;        return contrasenia != null &amp;&amp; contrasenia.length() &gt;= 6 &amp;&amp; contrasenia.length() &lt;= 12 &amp;&amp; contrasenia.matches(&quot;.*[0-9].*&quot;) &amp;&amp; contrasenia.matches(&quot;.*[A-Z].*&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNombre() {
+<b class="fc">&nbsp;        return nombre;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getApellido() {
+<b class="fc">&nbsp;        return apellido;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getNombreUsuario() {
+<b class="fc">&nbsp;        return nombreUsuario;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //TODO Disenar el proceso de activo e inactivo.
+&nbsp;    public boolean isActivo() {
+<b class="fc">&nbsp;        return activo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setActivo(boolean activo) {
+<b class="fc">&nbsp;        this.activo = activo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    private void verificarInvariantes() {
+<b class="fc">&nbsp;        assert nombre != null : &quot;El nombre del operario no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert nombre != &quot;&quot; : &quot;El nombre del operario no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert apellido != null : &quot;El apellido del operario no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert apellido != &quot;&quot; : &quot;El apellido del operario no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert nombreUsuario != null : &quot;El nombre de usuario del operario no puede ser nulo&quot;;</b>
+<b class="fc">&nbsp;        assert nombreUsuario != &quot;&quot; : &quot;El nombre de usuario del operario no puede ser vacío&quot;;</b>
+<b class="fc">&nbsp;        assert nombreUsuario.length() &lt;= 10 : &quot;El nombre de usuario del operario no puede tener más de 10 caracteres&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia != null : &quot;La contraseña del operario no puede ser nula&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.length() &gt;= 6 : &quot;La contraseña del operario no puede tener menos de 6 caracteres&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.length() &lt;= 12 : &quot;La contraseña del operario no puede tener más de 12 caracteres&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.matches(&quot;.*[0-9].*&quot;) : &quot;La contraseña del operario debe contener al menos un número&quot;;</b>
+<b class="fc">&nbsp;        assert contrasenia.matches(&quot;.*[A-Z].*&quot;) : &quot;La contraseña del operario debe contener al menos una letra mayúscula&quot;;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-30 08:03</div>
+</div>
+</body>
+</html>
